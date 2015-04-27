@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "style" %>
+<h1>List of Concerns</h1> 
+
+<table> 
+	<tr> 
+		<th>Name</th> 
+		<th>Description</th> 
+		<th>Diagnosis?</th> 
+	</tr> 
+	
+	<% @concerns.sort_by{|concern| concern.name}.each do |concern| %> 
+		<tr> 
+			<td><%= concern.name %></td> 
+			<td><%= concern.description %></td> 
+			<td><%= concern.diagnosis %></td> 
+			<td><%= link_to 'Show', concern_path(concern) %></td>
+			<td><%= link_to 'Edit', edit_concern_path(concern) %> </td> 
+			<td><%= link_to 'Destroy', concern_path(concern), 
+					method: :delete, 
+					data: { confirm: 'Are you sure?' } %></td> 
+		</tr> 
+	<% end %> 
+</table> 
+
+<p> 
+	<%= link_to 'New Area of Concern', new_concern_path %> 
+</p>
+<p>
+	<%= link_to 'Back to Admin Interface', root_path %>
+</p>

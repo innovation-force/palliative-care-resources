@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag "style" %>
+<body>
+<p> 
+	<strong>Name:</strong> 
+	<%= @category.name %> 
+</p> 
+<p> 
+	<strong>Description:</strong> 
+	<%= @category.description %> 
+</p> 
+
+<p> 
+	<strong>Concerns:</strong> 
+	<% for concern in Concern.all %> 
+		<ul>
+			<div>
+				<% if @category.concerns.include?(concern) %>
+					<li>
+						<%= concern.name %>
+					</li>
+				<% end %>
+			</div>
+		</ul>
+	<% end %> 
+</p>
+
+
+<%= link_to 'Back to List', categories_path %>
+</body>

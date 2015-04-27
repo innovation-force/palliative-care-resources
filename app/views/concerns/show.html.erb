@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "style" %>
+<p> 
+	<strong>Name:</strong> 
+	<%= @concern.name %> 
+</p> 
+<p> 
+	<strong>Description:</strong> 
+	<%= @concern.description %> 
+</p> 
+<p> 
+	<strong>Is Diagnosis: </strong> 
+	<%= @concern.diagnosis %> 
+</p> 
+
+<p> 
+	<strong>Categories:</strong> 
+	<% for category in Category.all %> 
+		<ul>
+			<div>
+				<% if @concern.categories.include?(category) %>
+					<li>
+						<%= category.name %>
+					</li>
+				<% end %>
+			</div>
+		</ul>
+	<% end %> 
+</p>
+
+
+<%= link_to 'Back to List', concerns_path %>
