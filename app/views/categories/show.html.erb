@@ -9,21 +9,23 @@
 	<%= @category.description %> 
 </p> 
 
-<p> 
-	<strong>Concerns:</strong> 
-	<% for concern in Concern.all %> 
-		<ul>
-			<div>
-				<% if @category.concerns.include?(concern) %>
-					<li>
-						<%= concern.name %>
-					</li>
-				<% end %>
-			</div>
-		</ul>
-	<% end %> 
-</p>
 
+
+<p> 
+	<strong>Associated Areas of Concern:</strong> <br/>
+	<% for c in @category.concerns %> 	
+		<%= c.name %> 
+		<br/>
+	<%end%>
+</p> 
+
+<p> 
+	<strong>Associated Services:</strong> <br/>
+	<% for s in @category.services %> 	
+		<%= s.title %> 
+		<br/>
+	<%end%>
+</p> 
 
 <%= link_to 'Back to List', categories_path %>
 </body>

@@ -16,4 +16,7 @@
 
  body{font-family: helvetica}
  
-table, th, td {padding: 3px} 
+table, th, td {padding: 3px; padding-right: 10px} 
+
+#index_table {border: 1px solid black}
+

@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag "style" %>
+<h1>List of Service Providers</h1> 
+
+<table> 
+	<tr> 
+		<th>Name</th> 
+		<th>Organization</th> 
+		<th>City</th> 
+		<th>State</th> 
+	</tr> 
+	
+	<% @providers.sort_by{|provider| provider.name}.each do |provider| %> 
+		<tr> 
+			<td><%= provider.name %></td> 
+			<td><%= provider.organization %></td> 
+			<td><%= provider.city %></td> 
+			<td><%= provider.state %></td> 
+			<td><%= link_to 'Show', provider_path(provider) %></td>
+			<td><%= link_to 'Edit', edit_provider_path(provider) %> </td> 
+			<td><%= link_to 'Destroy', provider_path(provider), 
+					method: :delete, 
+					data: { confirm: 'Are you sure?' } %></td> 
+		</tr> 
+	<% end %> 
+</table> 
+
+<p> 
+	<%= link_to 'New Provider', new_provider_path %> 
+</p>
+<p>
+	<%= link_to 'Back to Admin Interface', root_path %>
+</p>

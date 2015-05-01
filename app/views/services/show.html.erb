@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "style" %>
+<p> 
+	<strong>Name:</strong> 
+	<%= @service.title %> 
+</p> 
+<p> 
+	<strong>Description:</strong> 
+	<%= @service.description %> 
+</p> 
+
+
+<p> 
+	<% for p in Provider.all %> 
+		<% if p.id == @service.provider_id %>
+			<%= p.name %>	
+		<% end %>
+	<% end %> 
+</p>
+
+
+<%= link_to 'Back to List', services_path %>

@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "style" %>
+
+
+
+<h1>Services for <%= @category.name %></h1> 
+
+	<table> 
+		<tr> 
+			<th>Service</th> 
+		</tr> 
+		<% if @category.services %>
+			<% for service in @category.services%> 
+
+				<tr> 
+					<td><%= link_to service.title, {:controller => "browse", :action => "servprovider", :provider => service.provider_id } %></td>
+				</tr> 
+
+			<% end %> 
+		<% end %> 
+			
+	</table> 
+
+
+<%= link_to 'Back to Area of Concern', browse_concern_path %> 

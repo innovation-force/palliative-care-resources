@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'browse/category'
+
+  get 'browse/concern'
+
+  get 'browse/service'
+
+  get 'browse/servprovider'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +14,8 @@ Rails.application.routes.draw do
   
   resources :concerns
   resources :categories
+  resources :providers
+  resources :services
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

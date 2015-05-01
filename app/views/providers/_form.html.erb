@@ -1,0 +1,91 @@
+<%= form_for @provider do |f| %> 
+
+	<% if @provider.errors.any? %> 
+		<div id="error_explanation">
+			<h2> 
+				<%= pluralize(@provider.errors.count, "error") %> prohibited this item from being saved: 
+			</h2> 
+			<ul> 
+				<% @provider.errors.full_messages.each do |msg| %> 
+					<li> <%= msg %> </li> 
+				<% end %> 
+			</ul> 
+		</div> 
+	<%end%> 
+	
+	<p> 
+		<label>Provider Name</label><br> 
+		<%= f.text_field :name, :size => 30  %> 
+	</p> 
+	
+	<p> 
+		<%= f.label :organization %><br> 
+		<%= f.text_field :organization, :size => 30  %> 
+	</p> 
+
+	<p> 
+		<label>Contact Name</label><br> 
+		<%= f.text_field :contact, :size => 30  %> 
+	</p> 
+	
+	<p> 
+		<label>Phone Number</label><br> 
+		<%= f.text_field :phone%> 
+	</p> 
+	
+	
+	<p> 
+		<%= f.label :website %><br> 
+		<%= f.text_field :website, :size => 30  %> 
+	</p> 
+	
+	<p> 
+		<%= f.label :address1 %><br> 
+		<%= f.text_field :address1, :size => 50  %> 
+	</p> 
+	
+	<p> 
+		<%= f.label :address2 %><br> 
+		<%= f.text_field :address2, :size => 50  %> 
+	</p> 
+	
+	<p> 
+		<%= f.label :city %><br> 
+		<%= f.text_field :city %> 
+	</p> 
+	
+	<p> 
+		<label>State (or Online Only)</label><br> 
+		<%= f.select :state, [['Online Only','Online'],['Idaho','Idaho'],['Oregon','Oregon'],['Utah','Utah'], ['Washington','Washington']] %>
+	</p> 
+	
+	<p> 
+		<%= f.label :zip %><br> 
+		<%= f.number_field :zip%> 
+	</p> 
+	<h2>Add Associated Services </h2>
+	<fieldset>
+	<%= f.fields_for :services do |builder| %> 
+		
+			<%= builder.label :title, "Service Title" %><br/> 
+			<%= builder.text_field :title %> <br/>
+			
+			<%= builder.label :description, "Service Description" %><br/> 
+			<%= builder.text_area :description, :rows => 3 %> <br/>
+			<%= builder.check_box :_destroy %> 
+			<%= builder.label :_destroy, "remove" %><br/>
+			
+			<td><%= link_to 'Destroy', service_path(builder), 
+					method: :delete, 
+					data: { confirm: 'Are you sure?' } %>
+
+			
+			
+		
+	<% end %>
+	</fieldset>
+
+	<p> 
+		<%= f.submit %> 
+	</p> 
+<% end %> 

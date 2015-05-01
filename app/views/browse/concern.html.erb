@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "style" %>
+<h1>List of Concerns</h1> 
+
+<table> 
+	<tr> 
+		<th>Diagnosis</th> 
+	</tr> 
+	
+	<% for concern in Concern.all%> 
+		<% if concern.diagnosis %>
+		<tr> 
+			<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %></td>
+		</tr> 
+		<%end %>
+	<% end %> 
+</table> 
+
+<table> 
+	<tr> 
+		<th>Other Concerns</th> 
+	</tr> 
+	
+	<% for concern in Concern.all%> 
+		<% if not concern.diagnosis %>
+		<tr> 
+			<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %></td>
+		</tr> 
+		<% end %>
+	<% end %> 
+</table> 

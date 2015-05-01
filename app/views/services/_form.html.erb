@@ -1,0 +1,38 @@
+<%= form_for @service do |f| %> 
+
+	<% if @service.errors.any? %> 
+		<div id="error_explanation">
+			<h2> 
+				<%= pluralize(@service.errors.count, "error") %> prohibited this item from being saved: 
+			</h2> 
+			<ul> 
+				<% @service.errors.full_messages.each do |msg| %> 
+					<li> <%= msg %> </li> 
+				<% end %> 
+			</ul> 
+		</div> 
+	<%end%> 
+	
+	<p> 
+		<%= f.label :title %><br> 
+		<%= f.text_field :title %> 
+	</p> 
+	
+	<p> 
+		<%= f.label :description %><br> 
+		<%= f.text_area :description %> 
+	</p> 
+	
+	<p>	
+		<%= f.select :provider_id, Provider.all.collect { |p| [p.name, p.id]} %>
+	
+	</p>
+
+	
+	
+
+	
+	<p> 
+		<%= f.submit %> 
+	</p> 
+<% end %> 

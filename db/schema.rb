@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424215538) do
+ActiveRecord::Schema.define(version: 20150430224031) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -30,12 +30,55 @@ ActiveRecord::Schema.define(version: 20150424215538) do
   add_index "categories_concerns", ["category_id"], name: "index_categories_concerns_on_category_id"
   add_index "categories_concerns", ["concern_id"], name: "index_categories_concerns_on_concern_id"
 
+  create_table "categories_services", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "service_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories_services", ["category_id"], name: "index_categories_services_on_category_id"
+  add_index "categories_services", ["service_id"], name: "index_categories_services_on_service_id"
+
   create_table "concerns", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.boolean  "diagnosis"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "organization"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "phone"
+    t.string   "website"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "contact"
+  end
+
+  create_table "providers_services", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "service_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "providers_services", ["provider_id"], name: "index_providers_services_on_provider_id"
+  add_index "providers_services", ["service_id"], name: "index_providers_services_on_service_id"
+
+  create_table "services", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "provider_id"
   end
 
 end

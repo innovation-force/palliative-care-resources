@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "style" %>
+
+
+
+<h1>Categories for <%= @concern.name %></h1> 
+
+	<table> 
+		<tr> 
+			<th>Category</th> 
+		</tr> 
+		
+		<% for category in @concern.categories%> 
+
+			<tr> 
+				<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id } %></td>
+			</tr> 
+
+		<% end %> 
+	</table> 
+
+<%= link_to 'Back to Area of Concern', browse_concern_path %> 

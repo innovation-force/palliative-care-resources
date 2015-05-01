@@ -1,18 +1,63 @@
 <%= stylesheet_link_tag "style" %>
 <body>
 <h1>Palliative Care Resource Database </h1> 
+
+<%= link_to 'Browse Database', browse_concern_path %> 
+
 <h2>Admin Interface</h2> 
+<table id="index_table"> 
+<th>Area of Concern</th> 
+<th>Category </th>
+
+<tr class = "index_table_row"> 
+<td>
 <p> 
 	<%= link_to 'Area of Concern List', controller: 'concerns' %> 
 </p>
 <p>
 	<%= link_to 'Add New Area of Concern', new_concern_path %> 
 </p>
+</td>
 
+<td>
 <p> 
 	<%= link_to 'Category List', controller: 'categories' %> 
 </p>
 <p>
 	<%= link_to 'Add New Category', new_category_path %> 
 </p>
+</td>
+
+
+</tr>
+
+</table> 
+<br/>
+<table id="index_table"> 
+<th>Service Provider </th>
+<th>Services </th>
+
+<tr class = "index_table_row"> 
+<td>
+<p> 
+	<%= link_to 'Service Providers List', controller: 'providers' %> 
+</p>
+<p>
+	<%= link_to 'Add New Service Provider', new_provider_path %> 
+</p>
+</td>
+
+<td>
+<p> 
+	<%= link_to 'Services List', controller: 'services' %> 
+</p>
+<p>
+	<%= link_to 'Add New Service', new_service_path %> 
+</p>
+</td>
+
+
+</tr>
+
+</table> 
 </body>

@@ -24,12 +24,25 @@
 	</p> 
 	
 	<p> 
+		<label>Associated Areas of Concern</label>
 		<div>
 			<%= hidden_field_tag "concern[category_ids][]", nil %>
 			<% Concern.all.sort_by{|concern| concern.name}.each do |concern| %> 	
 				<%= check_box_tag "category[concern_ids][]", concern.id, 
 				@category.concerns.include?(concern), id: dom_id(concern) %>
 				<%= label_tag dom_id(concern), concern.name %></br>
+		</div>
+		<% end %> 
+	</p>
+	
+	<p> 
+		<label>Associated Services</label>
+		<div>
+			<%= hidden_field_tag "service[category_ids][]", nil %>
+			<% Service.all.sort_by{|service| service.title}.each do |service| %> 	
+				<%= check_box_tag "category[service_ids][]", service.id, 
+				@category.services.include?(service), id: dom_id(service) %>
+				<%= label_tag dom_id(service), service.title %></br>
 		</div>
 		<% end %> 
 	</p>
