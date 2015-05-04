@@ -2,20 +2,27 @@
 
 
 
-<h1>Categories for <%= @concern.name %></h1> 
+<h1>Categories for <%= @concern.name %> </h1> 
+
+<div class ="crumbs">
+
+</br><strong> Area of Concern: </strong><%= @concern.name %> <%= link_to 'change', browse_concern_path %> 
+
+</br> 
 
 	<table> 
 		<tr> 
 			<th>Category</th> 
 		</tr> 
 		
+
 		<% for category in @concern.categories%> 
 
 			<tr> 
-				<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id } %></td>
+				<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id, :concern => @concern.id} %></td>
 			</tr> 
 
 		<% end %> 
 	</table> 
 
-<%= link_to 'Back to Area of Concern', browse_concern_path %> 
+<%= link_to 'Start Over', browse_concern_path %> 

@@ -1,8 +1,23 @@
 <%= stylesheet_link_tag "style" %>
+
+<h1>View Provider Details </h1>
+
+<div class ="crumbs">
+
+</br><strong> Area of Concern: </strong><%= @concern.name %> <%= link_to 'change', browse_concern_path %> 
+</br><strong> Category: </strong> <%= @category.name %> <%= link_to 'change', {:controller => "browse", :action => "category", :concern => @concern.id} %>
+
+</br><strong> Service: </strong><%= @service.title %> <%= link_to 'change', {:controller => "browse", :action => "service", :category => @category.id, :concern => @concern.id} %>
+
+</br> 
+
+</div>
+
+<h2> <%= @provider.name %>  </h2>
 <p> 
-	<strong>Name:</strong> 
-	<%= @provider.name %> 
-</p> 
+
+	
+</p>  
 <p> 
 	<strong>Organization:</strong> 
 	<%= @provider.organization %> 
@@ -44,14 +59,23 @@
 			<div>
 				<% if service.provider_id == @provider.id %>
 					<li>
-						<%= service.title %>
+						<%= service.title %><br/>
+						<%= service.description %>
 					</li>
 				<% end %>
 			</div>
 		</ul>
 	<% end %> 
 </p>
-</p> 
+<p>
 
-<%= link_to 'Back to List', providers_path %>
+<h2>Comments for <%= @service.title %></h2>
+<%= render @service.comments %> 
 
+<h2>Add a Comment </h2> 
+<%=render 'comments/form' %>
+
+
+<%= link_to 'Start Over', browse_concern_path %> 
+
+</p>

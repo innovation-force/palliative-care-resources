@@ -5,12 +5,13 @@
 	<tr> 
 		<th>Diagnosis</th> 
 	</tr> 
-	
+
 	<% for concern in Concern.all%> 
 		<% if concern.diagnosis %>
 		<tr> 
 			<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %></td>
 		</tr> 
+		
 		<%end %>
 	<% end %> 
 </table> 

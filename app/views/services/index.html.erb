@@ -1,16 +1,29 @@
 <%= stylesheet_link_tag "style" %>
 <h1>List of Services</h1> 
 
+<div class = "nav_bar">
+
+<p> 
+	<%= link_to 'New Service', new_service_path %> 
+</p>
+<p>
+	<%= link_to 'Back to Admin Interface', root_path %>
+</p>
+
+</div>
+
 <table> 
 	<tr> 
 		<th>Title</th> 
+		<th>Service Provider</th>
 		<th>Description</th> 
 	
 	</tr> 
-	
-	<% @services.each do |service| %> 
+
+	<% @services.sort_by{|service| service.provider.name}.each do |service| %> 
 		<tr> 
 			<td><%= service.title %></td> 
+			<td><%= service.provider.name %>
 			<td><%= service.description %></td> 
 			
 			<td><%= link_to 'Show', service_path(service) %></td>
@@ -22,9 +35,3 @@
 	<% end %> 
 </table> 
 
-<p> 
-	<%= link_to 'New Service', new_service_path %> 
-</p>
-<p>
-	<%= link_to 'Back to Admin Interface', root_path %>
-</p>

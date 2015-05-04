@@ -3,6 +3,18 @@
 <body>
 <h1>List of Categories</h1> 
 
+<div class = "nav_bar">
+
+<p> 
+	<%= link_to 'New Category', new_category_path %> 
+</p>
+<p>
+	<%= link_to 'Back to Admin Interface', root_path %>
+</p>
+
+</div>
+
+
 <table> 
 	<tr> 
 		<th>Name</th> 
@@ -22,10 +34,5 @@
 	<% end %> 
 </table> 
 
-<p> 
-	<%= link_to 'New Category', new_category_path %> 
-</p>
-<p>
-	<%= link_to 'Back to Admin Interface', root_path %>
-</p>
+
 </body>

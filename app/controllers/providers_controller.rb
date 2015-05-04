@@ -10,6 +10,7 @@ class ProvidersController < ApplicationController
 	def new 
 		@provider = Provider.new 		
 		@provider.services.build
+		@services = Service.all
 	end 
 	
 	def edit 
@@ -49,6 +50,6 @@ class ProvidersController < ApplicationController
 	
 	private 
 		def provider_params 
-			params.require(:provider).permit(:name, :organization, :address1, :address2, :city, :state, :zip, :phone, :website, :contact, :service_ids => [], services_attributes: [:id, :title, :description])
+			params.require(:provider).permit(:name, :organization, :address1, :address2, :city, :state, :zip, :phone, :website, :contact, :service_ids => [], services_attributes: [:id, :title, :description, :_destroy])
 		end 
 end

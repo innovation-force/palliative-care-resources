@@ -27,6 +27,18 @@
 		<%= f.select :provider_id, Provider.all.collect { |p| [p.name, p.id]} %>
 	
 	</p>
+	
+	<p> 
+		<label>Associated Categories</label>
+		<div>
+			<%= hidden_field_tag "category[service_ids][]", nil %>
+			<% Category.all.sort_by{|category| category.name}.each do |category| %> 	
+				<%= check_box_tag "service[category_ids][]", category.id, 
+				@service.categories.include?(category), id: dom_id(category) %>
+				<%= label_tag dom_id(category), category.name %></br>
+		</div>
+		<% end %> 
+	</p>
 
 	
 	

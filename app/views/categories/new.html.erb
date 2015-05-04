@@ -1,12 +1,18 @@
 <%= stylesheet_link_tag "style" %>
 <body>
-<h1>Create new Category </h1> 
+<h1>Create new Category </h1>
 
-<%= render 'form' %>
+<div class = "nav_bar"> 
+
 <p> 
 	<%= link_to 'Back to Category', categories_path %> 
 </p>
 <p>
 	<%= link_to 'Back to Admin Interface', root_path %>
 </p>
+
+</div>
+
+<%= render 'form' %>
+
 </body>

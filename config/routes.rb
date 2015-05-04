@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   resources :concerns
   resources :categories
   resources :providers
-  resources :services
+  resources :services do
+	resources :comments 
+  end 
+  
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

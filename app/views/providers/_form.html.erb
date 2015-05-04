@@ -65,24 +65,15 @@
 	</p> 
 	<h2>Add Associated Services </h2>
 	<fieldset>
-	<%= f.fields_for :services do |builder| %> 
+	
+		<%= f.fields_for :services do |builder| %> 
 		
-			<%= builder.label :title, "Service Title" %><br/> 
-			<%= builder.text_field :title %> <br/>
+			<%= render "services_fields", :f => builder %>
 			
-			<%= builder.label :description, "Service Description" %><br/> 
-			<%= builder.text_area :description, :rows => 3 %> <br/>
-			<%= builder.check_box :_destroy %> 
-			<%= builder.label :_destroy, "remove" %><br/>
-			
-			<td><%= link_to 'Destroy', service_path(builder), 
-					method: :delete, 
-					data: { confirm: 'Are you sure?' } %>
+		<% end %>
+		
 
-			
-			
-		
-	<% end %>
+
 	</fieldset>
 
 	<p> 

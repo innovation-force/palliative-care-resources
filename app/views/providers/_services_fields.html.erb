@@ -1,0 +1,23 @@
+			<%= f.label :title, "Service Title" %><br/> 
+			<%= f.text_field :title %> <br/>			
+			
+			<%= f.label :description, "Service Description" %><br/> 
+			<%= f.text_area :description, :rows => 3 %> <br/>
+			
+			<p> 
+		<label>Associated Categories</label>
+		
+		<div>
+			
+			<% Category.all.sort_by{|category| category.name}.each do |category| %> 	
+				<%= check_box_tag "service[category_ids][]", category.id, 
+				checked = false, id: dom_id(category) %>
+				<%= label_tag dom_id(category), category.name %></br>
+		</div>
+		<% end %> 
+	</p>
+			
+			<%= f.check_box :_destroy %> 
+			<%= f.label :_destroy, "Remove Service" %><br/>
+			
+			
