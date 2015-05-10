@@ -68,10 +68,10 @@
 	
 		<%= f.fields_for :services do |builder| %> 
 		
-			<%= render "services_fields", :f => builder %>
+			<%= render "service_fields", :f => builder %>
 			
 		<% end %>
-		
+		<%= link_to_add_fields "Add Service", f, :services %>
 
 
 	</fieldset>

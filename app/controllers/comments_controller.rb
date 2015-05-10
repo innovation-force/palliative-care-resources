@@ -1,12 +1,8 @@
 class CommentsController < ApplicationController
 	def create 
-		@concern = Concern.find(params[:concern])
-		@provider = Provider.find(params[:provider])
-		@category = Category.find(params[:category])
-		@service = Service.find(params[:service])
+		@service = Service.find(params[:service_id])
 		@comment = @service.comments.create(comment_params)
-		redirect_to :controller => "browse", :action => "servprovider", :service => @service.id, :provider => @provider.id, :category => @category.id, :concern => @concern.id
-
+		redirect_to :controller => "browse", :action => "servprovider" 
 	end
 	
 	private 

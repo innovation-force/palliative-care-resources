@@ -53,6 +53,9 @@
 				<% if service.provider_id == @provider.id %>
 					<li>
 						<%= service.title %>
+						<% for cat in service.categories %> </br>
+							<%= cat.name %> 
+						<% end %>
 					</li>
 				<% end %>
 			</div>

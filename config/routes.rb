@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'browse/service'
 
   get 'browse/servprovider'
+  post 'browse/servprovider'
 
   get 'welcome/index'
 

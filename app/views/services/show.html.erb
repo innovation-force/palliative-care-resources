@@ -14,12 +14,14 @@
 </p> 
 
 
-<p> 
-	<% for p in Provider.all %> 
-		<% if p.id == @service.provider_id %>
-			<%= p.name %>	
-		<% end %>
-	<% end %> 
+<p> <strong>Provider: </strong> 
+	<%= @service.provider.name %>
 </p>
 
-
+<p> <strong>Categories: </strong> 
+<ul> 
+	<% for cat in @service.categories %>
+		<li><%= cat.name %> </li>
+	<% end %>
+</ul> 
+</p>

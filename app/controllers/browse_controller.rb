@@ -5,7 +5,11 @@ class BrowseController < ApplicationController
   end
 
   def concern
-	@concern = Concern.all
+	if params[:search]
+		@concern = Concern.find(:all, :conditions => ['name LIKE ?', "%#{params}[:search]}%"])
+	else 
+		@concern = Concern.all
+	end
   end
 
   def service	
@@ -16,9 +20,14 @@ class BrowseController < ApplicationController
   end
 
   def servprovider
+	Rails.logger.info "#" * 80
+	Rails.logger.info params.inspect
+
 	@concern = Concern.find(params[:concern])
 	@category = Category.find(params[:category])
 	@service = Service.find(params[:service])
 	@provider = Provider.find(params[:provider])
   end
+  
+  
 end

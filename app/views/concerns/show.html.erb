@@ -20,17 +20,15 @@
 
 <p> 
 	<strong>Categories:</strong> 
-	<% for category in Category.all %> 
-		<ul>
-			<div>
-				<% if @concern.categories.include?(category) %>
+	<ul>
+	<% for cat in @concern.categories %> 
+		
 					<li>
-						<%= category.name %>
+						<%= cat.name %>
 					</li>
-				<% end %>
-			</div>
-		</ul>
+		
 	<% end %> 
+	</ul>
 </p>
 
 

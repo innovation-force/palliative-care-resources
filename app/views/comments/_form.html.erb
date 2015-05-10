@@ -1,6 +1,10 @@
-<%= form_for([@service, @service.comments.build]) do |f| %> 
-
+<%= form_for(browse_servprovider_path) do |f| %> 
+#HIDDEN FORM FIELDS
 <p> 
+	<%= f.hidden_field :concern, :value => @concern%>
+	<%= f.hidden_field :category, :value => @category%>
+	<%= f.hidden_field :service, :value => @service %>
+	<%= f.hidden_field :provider, :value => @provider%>
 	<%= f.label :commenter %> </br> 
 	<%= f.text_field :commenter %> 
 </p> 
