@@ -1,12 +1,14 @@
 <%= stylesheet_link_tag "style" %>
 <h1>List of Concerns</h1> 
 
-<%= form_tag ('/browse/concern'), :method => 'get' do %>
-<p> 
-	<%= text_field_tag :search %> 
-	<%= submit_tag "Search" %>
-</p>
+<%= form_tag ('/browse/search'), :method => 'get' do %>
+	<p> 
+		<%= text_field_tag :search %> 
+		<%= submit_tag "Search" %>
+	</p>
+
 <% end %> 
+
 
 <table> 
 	<tr> 

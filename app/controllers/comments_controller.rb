@@ -2,7 +2,14 @@ class CommentsController < ApplicationController
 	def create 
 		@service = Service.find(params[:service_id])
 		@comment = @service.comments.create(comment_params)
-		redirect_to :controller => "browse", :action => "servprovider" 
+		redirect_to :back
+	end
+	
+	def destroy 
+		@service = Service.find(params[:service_id])
+		@comment = @service.comments.find(params[:id])
+		@comment.destroy 
+		redirect_to :back
 	end
 	
 	private 

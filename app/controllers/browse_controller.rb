@@ -1,33 +1,52 @@
 class BrowseController < ApplicationController
-  def category
-	@concern = Concern.find(params[:concern])
-	@category = Category.all
-  end
 
-  def concern
-	if params[:search]
-		@concern = Concern.find(:all, :conditions => ['name LIKE ?', "%#{params}[:search]}%"])
-	else 
+	def category
+		@concern = Concern.find(params[:concern])
+		@category = Category.all
+	end
+
+	def concern
 		@concern = Concern.all
 	end
-  end
 
-  def service	
-	@service = Service.all
-	@category = Category.find(params[:category])
-	@concern = Concern.find(params[:concern])
-	
-  end
+	def service	
+		@service = Service.all
+		@category = Category.find(params[:category])
+		@concern = Concern.find(params[:concern])
 
-  def servprovider
-	Rails.logger.info "#" * 80
-	Rails.logger.info params.inspect
+	end
 
-	@concern = Concern.find(params[:concern])
-	@category = Category.find(params[:category])
-	@service = Service.find(params[:service])
-	@provider = Provider.find(params[:provider])
-  end
-  
+	def servprovider
+		@service = Service.find(params[:service])
+		
+		@provider = Provider.find(params[:provider])
+		
+		if params[:concern]
+			@concern = Concern.find(params[:concern])
+		end
+		
+		if params[:category]
+			@category = Category.find(params[:category])
+		end 
+		
+		
+	end
+
+	def search 
+		if params[:search]
+			@wildcard = params[:search]
+			@wildcard.insert(0, '%')
+			@wildcard.insert(-1, '%')
+			
+			@services = Service.joins(:provider).where(["title ILIKE ? OR description ILIKE ? OR providers.name ILIKE ? OR providers.organization ILIKE ? OR providers.city ILIKE ?",  @wildcard, @wildcard, @wildcard, @wildcard, @wildcard])
+			
+			
+		else
+			@providers = Provider.all 
+			@services = Service.all
+		end
+	end 
+
   
 end
+

@@ -25,3 +25,23 @@
 	<% end %>
 </ul> 
 </p>
+
+<% @service.comments.each do |comment| %> 
+	<fieldset class = 'comments'>
+<p> 
+	<strong>Comment:</strong> 
+	<%= comment.body %> 
+	
+</p>
+<p> 
+Commenter:
+	<%= comment.commenter %> 
+</p> 
+
+	<%= link_to 'Delete Comment', [comment.service, comment], 
+				method: :delete, 
+				data: { confirm: 'Are you sure?' } %>
+</fieldset>
+</br> 
+<% end %>
+

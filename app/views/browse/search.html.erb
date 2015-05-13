@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag "style" %>
+
+
+
+<%= form_tag ('/browse/search'), :method => 'get' do %>
+	<p> 
+		<%= text_field_tag :search %> 
+		<%= submit_tag "Search" %>
+	</p>
+
+<% end %> 
+
+
+
+	<table> 
+		<tr> 
+			<th>Services</th> 
+		</tr> 
+		<% if @services %>
+			<% for service in @services%> 
+
+				<tr> 
+					<td><%= link_to service.title, {:controller => "browse", :action => "servprovider", :service => service.id, :provider => service.provider_id} %>
+					 -  <%= service.description %>			
+					</td>
+					
+				</tr> 
+				<tr> 
+					<td>
+					-----<%= service.provider.name %> - <%= service.provider.organization %> 
+					<br/>
+						<%= service.provider.city %>
+					<br/><br/>
+					</td>
+				</tr> 
+			
+			<% end %> 
+		<% end %>
+			
+	</table> 
+
+<p>
+
+<%= link_to 'Start Over', browse_concern_path %> 
+
+</p>
+

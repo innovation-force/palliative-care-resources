@@ -3,23 +3,9 @@
 	
 	<%= f.label :description, "Service Description" %><br/> 
 	<%= f.text_area :description, :rows => 3 %> <br/>
-	
-	<p> 
-		<label>Associated Categories</label>
-		
-	<p> 
-		<label>Associated Categories</label>
-		<div>
-			<%= hidden_field_tag "category[service_ids][]", nil %>
-			<% Category.all.sort_by{|category| category.name}.each do |category| %> 	
-				<%= check_box_tag "category_ids[]", category.id, 
-				@service.categories.include?(category), id: dom_id(category) %>
-				<%= label_tag dom_id(category), category.name %></br>
-		</div>
-			<% end %> 
-	</p>
 
-	<%= f.hidden_field :category_ids, :value => "category_ids[]" %>
+	<br/>
+	<%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: "Select a category"}, {multiple: true, size: "7"} %>
 	
 	<%= f.check_box :_destroy %> 
 	<%= f.label :_destroy, "Remove Service" %><br/>

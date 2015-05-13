@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   get 'browse/servprovider'
   post 'browse/servprovider'
+  
+  get 'browse/search'
 
+  
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

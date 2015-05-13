@@ -14,17 +14,20 @@
 
 <table> 
 	<tr> 
-		<th>Title</th> 
-		<th>Service Provider</th>
-		<th>Description</th> 
+		<th><%= link_to "Title", :sort => "title" %></th> 
+		<th><%= link_to "Service Provider", :sort => "providers.name" %></th>
+		<th><%= link_to "Description", :sort => "description" %></th> 
+		<th><%= link_to "Comments", :sort => "comments" %> </th> 
 	
 	</tr> 
 
-	<% @services.sort_by{|service| service.provider.name}.each do |service| %> 
+	<% @services.each do |service| %> 
 		<tr> 
 			<td><%= service.title %></td> 
 			<td><%= service.provider.name %>
 			<td><%= service.description %></td> 
+			<td><%= service.comments.count %></td>
+			
 			
 			<td><%= link_to 'Show', service_path(service) %></td>
 			<td><%= link_to 'Edit', edit_service_path(service) %> </td> 

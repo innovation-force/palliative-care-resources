@@ -1,6 +1,11 @@
 class ServicesController < ApplicationController
 	def index 
-		@services = Service.all 
+		@services = Service.joins(:provider).order(params[:sort]) 
+		if (params[:sort]) == "comments" 
+			counts = Service.includes(:comments).count('comments')
+			@services = Service.order(counts)
+		end 
+
 	end 
 	
 	def show 

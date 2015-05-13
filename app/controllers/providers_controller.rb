@@ -23,7 +23,6 @@ class ProvidersController < ApplicationController
 	def create 
 
 		@provider = Provider.new(provider_params) 
-		@service = Service.new(provider_params[services_attributes])
 		if @provider.save 
 			redirect_to @provider
 		else 
@@ -54,13 +53,9 @@ class ProvidersController < ApplicationController
 	
 	private 
 		def provider_params 
-			params.require(:provider).permit(:name, :organization, :address1, :address2, :city, :state, :zip, :phone, :website, :contact, :service_ids => [], services_attributes: [:id, :title, :description, :_destroy, :category_ids => []])
-		
-		
+			params.require(:provider).permit(:name, :organization, :address1, :address2, :city, :state, :zip, :phone, :website, :contact, :service_ids => [], services_attributes: [:id, :title, {:category_ids => []}, :description, :_destroy])
+
 		end 
 		
-		def service_params 
-			params.require(:service).permit(:title, :description, :provider_id, :category_ids => [])
-		end
 		
 end
