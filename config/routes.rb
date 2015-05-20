@@ -9,13 +9,15 @@ Rails.application.routes.draw do
   post 'browse/servprovider'
   
   get 'browse/search'
-
   
   get 'welcome/index'
+  
+  get 'requests/closed'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
+  resources :requests
   resources :concerns
   resources :categories
   resources :providers

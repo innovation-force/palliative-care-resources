@@ -1,28 +1,40 @@
-<%= stylesheet_link_tag "style" %>
-
+<%= render 'shared/browse_nav' %> 
 
 
 <h1>Categories for <%= @concern.name %> </h1> 
 
-<div class ="crumbs">
+<div id="sidebar" class="col-xs-2">
+          <!-- sidebar content -->
+		  <%= render 'shared/browse_side_category' %> 
+		 
+        </div>
 
-</br><strong> Area of Concern: </strong><%= @concern.name %> <%= link_to 'change', browse_concern_path %> 
+			
+<div class="container">
+  <div class="row">
 
-</br> 
-
-	<table> 
-		<tr> 
-			<th>Category</th> 
-		</tr> 
+	<div class="col-xs-6" >
 		
+			 
 
-		<% for category in @concern.categories%> 
 
-			<tr> 
-				<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id, :concern => @concern.id} %></td>
-			</tr> 
+	
 
-		<% end %> 
-	</table> 
 
-<%= link_to 'Start Over', browse_concern_path %> 
+				<table class="table table-hover">
+					<tr> 
+						<th>Category</th> 
+					</tr> 
+					
+
+					<% for category in @concern.categories%> 
+
+						<tr> 
+							<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id, :concern => @concern.id} %>
+							(<%= category.services.count %>)
+							</td>
+						</tr> 
+
+					<% end %> 
+				</table> 
+

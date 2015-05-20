@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504203118) do
+ActiveRecord::Schema.define(version: 20150518164628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,12 +86,27 @@ ActiveRecord::Schema.define(version: 20150504203118) do
   add_index "providers_services", ["provider_id"], name: "index_providers_services_on_provider_id", using: :btree
   add_index "providers_services", ["service_id"], name: "index_providers_services_on_service_id", using: :btree
 
+  create_table "requests", force: :cascade do |t|
+    t.string   "title"
+    t.string   "req_type"
+    t.string   "body"
+    t.string   "parent_type"
+    t.string   "parent_name"
+    t.string   "user"
+    t.string   "email"
+    t.string   "note"
+    t.boolean  "resolved"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "services", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "provider_id"
+    t.integer  "refcount",    default: 0
   end
 
 end

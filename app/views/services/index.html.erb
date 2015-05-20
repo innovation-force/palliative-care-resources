@@ -18,6 +18,7 @@
 		<th><%= link_to "Service Provider", :sort => "providers.name" %></th>
 		<th><%= link_to "Description", :sort => "description" %></th> 
 		<th><%= link_to "Comments", :sort => "comments" %> </th> 
+		<th><%= link_to "Referrals", :sort => "refcount" %> </th> 
 	
 	</tr> 
 
@@ -27,6 +28,7 @@
 			<td><%= service.provider.name %>
 			<td><%= service.description %></td> 
 			<td><%= service.comments.count %></td>
+			<td><%= service.refcount %></td> 
 			
 			
 			<td><%= link_to 'Show', service_path(service) %></td>

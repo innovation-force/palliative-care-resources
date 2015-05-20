@@ -1,0 +1,84 @@
+<%= form_for @request do |f| %> 
+	
+	<div class = "request_info"> 
+		<p> 
+			Thank you for adding your input to the Palliative Care Resource Database. 
+			<br/>We appreciate your insights, observations and suggestions. 
+			<br/><br/>
+		</p> 
+	</div>
+	<p> 
+		<%= f.label :title, "Please give your request a descriptive title:" %>
+		<%= f.text_field :title, :size => "50"%> 
+	</p> 
+	
+	<div class = "request_info"> 
+		<p> 
+			Tell us what kind of a request you are making: 
+				
+	<%= f.select(:req_type, options_for_select(["Comment/Suggestion", "Bug Report", "New Service", "New Service Provider", "New Category", "New Concern"])) %>
+
+			<ul> 
+				<li><strong> Comment/Suggestion</strong> - General feedback on the database. </li> 
+				<li><strong>Bug Report </strong>- Report error messages or unusual website behavior. </li> 
+				
+				<li><strong>New Service </strong> -  For adding additional services offered by an existing service provider. 
+				<span title = "East Side Community Center is in the database and offers 'Support Groups'. Add a New Service if you want to add that East Side Community Center also offers 'Medical Appointment Transportation'."> [Example] </span>
+				
+				<li> <strong>New Service Provider</strong> - For adding a new service provider not in the database. 
+				<span title = "You just received a card from the owner of BrandNew Pharmacy. They aren't in the database, but they offer helpful services like free medication delivery. Add a New Service Provider to add them to the database so that others can find their information. "> [Example] </span>
+				
+				
+				<li> <strong>New Category</strong> - For adding a new specific category of services. 
+				<span title = "A member with cancer asked you for information on free wigs. You looked under 'Cancer' but there wasn't a place to even start looking for wigs. That's a kind of service that you're getting requests for. Add a New Category to let us know when the database doesn't have what you are specifically looking for. "> [Example] </span>
+				
+				
+				<li> <strong>New Concern</strong> - For adding a new broad section to the database. 				
+				<span title = "You just got two new members who are diagnosed with RareDiseasia. You need a place to start storing the resources you're finding, and want a new database section for RareDiseasia. Add a New Concern to let us know that a new broad category is needed. "> [Example] </span>
+				
+				
+		</p>
+	</div>
+
+	<div class = "request_info"> 
+		<p> 
+		<fieldset><legend>If you are suggesting a New Resource</legend><br/> 
+		Does your request fall under an existing resource? 
+		
+					
+	<%= f.select(:parent_type, options_for_select(["No/Not Sure", "Belongs to a Provider", "Belongs to a Category", "Belongs to a Concern"])) %>
+		
+		<span title = "If you are suggesting a New Service, what service provider provides it?
+If you are suggesting a New Provider, what existing category might it belong to?
+If you are suggesting a New Category, what large concern would it be a part of? "> [Explain] </span>
+				
+		
+	
+	<p> 
+	<%= f.label :parent_name, "Name of parent resource:" %>
+	<%= f.text_field :parent_name %> 
+	</p> 
+	</fieldset>
+	</div>
+	<p> 
+	<%= f.label :body, "Tell us about your request:" %><br/>
+	<%= f.text_area :body,  :size => "50x8"%> 
+	</p> 
+	
+	<div class = "request_info"> 
+		<p> 
+		(Optional) Add your name and email to allow us to follow up regarding your request: <br/><br/>
+			<%= f.label :user, "Name" %>
+			<%= f.text_field :user %> 
+			
+			<%= f.label :user, "Email" %>
+			<%= f.text_field :email %> 
+		
+		</p> 
+	</div>
+	
+	<%= f.hidden_field :resolved, :value => 'false' %>
+
+	<%= f.submit %>
+	
+<% end %>

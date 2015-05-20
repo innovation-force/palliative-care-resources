@@ -1,40 +1,73 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/browse_nav' %> 
+
+
 <h1>List of Concerns</h1> 
 
-<%= form_tag ('/browse/search'), :method => 'get' do %>
-	<p> 
-		<%= text_field_tag :search %> 
-		<%= submit_tag "Search" %>
-	</p>
+<div id="sidebar" class="col-xs-2">
+          <!-- sidebar content -->
+		  <%= render 'shared/browse_side' %> 
+		 
+        </div>
 
-<% end %> 
+	
+<div class="container">
+  <div class="row">
 
+	<div class="col-xs-5" >
+		
+			<table class="table table-hover"> 
+				<tr> 
+					<th>Diagnosis</th> 
+					<th></th>
+				</tr> 
+			
+				<% for concern in Concern.all%> 
+					<% if concern.diagnosis %>
+					<tr> 
+						<% @count = 0 %>
+						<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
+						
+						<% for c in concern.categories %> 				
+							
+							<% @count = @count + c.services.count %> 
+						<% end %> 
+					
+						<td><%= @count %></td>
 
-<table> 
-	<tr> 
-		<th>Diagnosis</th> 
-	</tr> 
+						</td>
+					</tr> 
+					<% end %>
+				<% end %> 
+			
+			</table> 
+	</div>
+	<div class="col-xs-5"> 
 
-	<% for concern in Concern.all%> 
-		<% if concern.diagnosis %>
+	<table class="table table-hover"> 
 		<tr> 
-			<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %></td>
+			<th>Other Concerns</th> 
+			<th></th>
 		</tr> 
 		
-		<%end %>
-	<% end %> 
-</table> 
+		<% for concern in Concern.all%> 
+			<% if not concern.diagnosis %>
+			<tr> 
+				<% @count = 0 %>
+				<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
+				
+				<% for c in concern.categories %> 				
+					
+					<% @count = @count + c.services.count %> 
+				<% end %> 
+			
+				<td><%= @count %></td>
 
-<table> 
-	<tr> 
-		<th>Other Concerns</th> 
-	</tr> 
-	
-	<% for concern in Concern.all%> 
-		<% if not concern.diagnosis %>
-		<tr> 
-			<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %></td>
-		</tr> 
-		<% end %>
-	<% end %> 
-</table> 
+				</td>
+			</tr> 
+			<% end %>
+		<% end %> 
+	</table> 
+	<div>
+
+	</div> 
+</div>

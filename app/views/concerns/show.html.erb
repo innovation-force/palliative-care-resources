@@ -1,35 +1,48 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/admin_nav' %> 
 
-<div class = "nav_bar"> 
-<%= link_to 'Back to List', concerns_path %>
+ <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+        <div id="main-content" class="col-xs-9">
+          <!--  main content -->
+		  
+
+		<h1>Concern Details</h1> 
+		<p> 
+
+			<strong>Name:</strong> 
+			<%= @concern.name %> 
+		</p> 
+		<p> 
+			<strong>Description:</strong> 
+			<%= @concern.description %> 
+		</p> 
+		<p> 
+			<strong>Is Diagnosis: </strong> 
+			<%= @concern.diagnosis %> 
+		</p> 
+
+		<p> 
+			<strong>Categories:</strong> 
+			<ul>
+			<% for cat in @concern.categories %> 
+				
+							<li>
+								<%= cat.name %>
+							</li>
+				
+			<% end %> 
+			</ul>
+		</p>
+
+	<%= link_to 'Edit Concern', edit_concern_path, class: 'btn btn-default' %> 
+
+	</div>
+  </div>
 </div>
-
-<p> 
-
-	<strong>Name:</strong> 
-	<%= @concern.name %> 
-</p> 
-<p> 
-	<strong>Description:</strong> 
-	<%= @concern.description %> 
-</p> 
-<p> 
-	<strong>Is Diagnosis: </strong> 
-	<%= @concern.diagnosis %> 
-</p> 
-
-<p> 
-	<strong>Categories:</strong> 
-	<ul>
-	<% for cat in @concern.categories %> 
-		
-					<li>
-						<%= cat.name %>
-					</li>
-		
-	<% end %> 
-	</ul>
-</p>
-
 
 

@@ -1,46 +1,58 @@
-<%= form_for @concern do |f| %> 
+<form role="form"> 
+	<div class = "form-group form-compact"> 
 
-	<% if @concern.errors.any? %> 
-		<div id="error_explanation">
-			<h2> 
-				<%= pluralize(@concern.errors.count, "error") %> prohibited this item from being saved: 
-			</h2> 
-			<ul> 
-				<% @concern.errors.full_messages.each do |msg| %> 
-					<li> <%= msg %> </li> 
-				<% end %> 
-			</ul> 
-		</div> 
-	<%end%> 
-	
-	<p> 
-		<%= f.label :name %><br> 
-		<%= f.text_field :name %> 
-	</p> 
-	
-	<p> 
-		<%= f.label :description %><br> 
-		<%= f.text_area :description %> 
-	</p> 
-	
-	<p> 
-		<%= f.label :diagnosis %><br> 
-		<%= f.select :diagnosis, [['True', true], ['False', false]] %>
-	
-	</p> 
-	
-	<p> 
-		<div>
-			<%= hidden_field_tag "concern[category_ids][]", nil %>
-			<% Category.all.sort_by{|category| category.name}.each do |category| %> 	
-				<%= check_box_tag "concern[category_ids][]", category.id, 
-				@concern.categories.include?(category), id: dom_id(category) %>
-				<%= label_tag dom_id(category), category.name %></br>
+	<%= form_for @concern do |f| %> 
+
+		<% if @concern.errors.any? %> 
+			<div id="error_explanation">
+				<h2> 
+					<%= pluralize(@concern.errors.count, "error") %> prohibited this item from being saved: 
+				</h2> 
+				<ul> 
+					<% @concern.errors.full_messages.each do |msg| %> 
+						<li> <%= msg %> </li> 
+					<% end %> 
+				</ul> 
+			</div> 
+		<%end%> 
+		
+		<p> 
+			<%= f.label :name %><br> 
+			<%= f.text_field :name, class: 'form-control' %> 
+		</p> 
+		
+		<p> 
+			<%= f.label :description %><br> 
+			<%= f.text_area :description, class: 'form-control' %> 
+		</p> 
+		
+		<p> 
+		<div class = "form-group">
+			<%= f.label :diagnosis %><br> 
+			<%= f.select :diagnosis, [['True', true], ['False', false]], {}, {class: 'form-control'}  %>
 		</div>
-		<% end %> 
-	</p>
+		</p> 
+		
+		<p> 
+			<div class = "form-group form-horizontal">
+			<div class = "height_limit">
+				<%= f.label :categories %>
+				<%= hidden_field_tag "concern[category_ids][]", nil %>
+				<% Category.all.sort_by{|category| category.name}.each do |category|%> 	
+				<div class = "checkbox">
+					<%= check_box_tag "concern[category_ids][]", category.id, 
+					@concern.categories.include?(category), id: dom_id(category), class: 'form-control'   %>
+					<%= label_tag dom_id(category), category.name, class: 'checkbox-inline' %></br>
+				</div>
+			<% end %> 
+			</div>
+			
+			</div>
+		</p>
 	
-	<p> 
-		<%= f.submit %> 
-	</p> 
-<% end %> 
+	</div>
+		<p> 
+			<%= f.submit 'Create Concern', :class => 'btn btn-default' %>
+		</p> 
+	<% end %> 
+</form>

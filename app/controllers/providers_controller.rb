@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
 	def index 
 		
-		@providers = Provider.all 
+		@providers = Provider.order(params[:sort]) 
 	end 
 	
 	def show 

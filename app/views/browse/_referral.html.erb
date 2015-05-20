@@ -1,0 +1,4 @@
+<%= form_for @service, :method => :put, :remote => true do |f| %> 
+	<%= f.hidden_field :refcount, :value => (@service.refcount + 1) %> 
+	<%= f.submit 'Referral Made', class: 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "style" %>
+<h1>View Request</h1> 
+
+<div class = "nav_bar">
+
+<p> 
+	<%= link_to 'Back to Browse', browse_concern_path %> 
+</p>
+
+</div>
+
+<p> 
+	<strong>Title:</strong> 
+	<%= @request.title %> 
+</p> 
+
+<p>
+	<strong>Date Created:</strong> 
+	<%= @request.created_at.strftime('%m/%d/%Y') %> 
+</p>
+
+<% if @request.user %> 
+	<p> 
+		<strong>Created By:</strong> 
+		<%= @request.user %> 
+		<% if @request.email %> 
+			- 	<%= @request.email%> 	
+		<% end %>
+	</p> 
+<% end %>
+
+<p> 
+	<strong>Type:</strong> 
+	<%= @request.req_type %> 
+</p> 
+
+<p> 
+	<strong>Parent:</strong> 
+	<%= @request.parent_type %> 
+	<% if @request.parent_name %> 
+	- 	<%= @request.parent_name%> 	
+	<% end %>
+</p> 
+
+<p> 
+	<%= @request.body %>
+</p>
+<%= form_for @request do |f| %>
+	
+	
+	<p>
+	<%= f.label :resolved, "Request Resolved?" %>
+	<%= f.select :resolved, options_for_select(['false', 'true']) %>
+	</p>
+	
+	<p> 
+	<%= f.label :note, "Notes:" %><br/>
+	<%= f.text_area :note,  :size => "50x8"%> 
+	</p> 
+	
+	<%= f.submit%>
+	
+	<% end %>
+

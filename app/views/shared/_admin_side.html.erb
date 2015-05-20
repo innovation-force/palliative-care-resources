@@ -1,0 +1,61 @@
+ <div class ="admin_sidebar">
+ <%= link_to 'Browse Database', browse_concern_path, class: 'btn btn-default' %> 
+<p>
+ <div class="dropdown pull-left">
+			  <button class="btn btn-link btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Area of Concern
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li><%= link_to 'Area of Concern List', controller: 'concerns' %> </li>
+				<li><%= link_to 'Add New Area of Concern', new_concern_path %> </li>
+			  </ul>
+		</div>
+		<br/>
+ <div class="dropdown pull-left">
+			  <button class="btn btn-link btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Category
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><%= link_to 'Category List', controller: 'categories' %> </li>
+					<li><%= link_to 'Add New Category', new_category_path %> </li>
+			  </ul>
+		</div>
+		<br/>
+ <div class="dropdown pull-left">
+			  <button class="btn btn-link btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Service Provider
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
+				<li><%= link_to 'Service Providers List', controller: 'providers' %> </li>
+				<li><%= link_to 'Add New Service Provider', new_provider_path, :"data-no-turbolink" => true %> </li>
+			  </ul>
+		</div>
+ <div class="dropdown pull-left">
+			  <button class="btn btn-link btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Service
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<li><%= link_to 'Services List', controller: 'services' %> </li>
+			<li><%= link_to 'Add New Service', new_service_path %> </li>
+			  </ul>
+		</div>
+		<br/>
+		
+		 <div class="dropdown pull-left">
+			  <button class="btn btn-link btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				User Requests
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<li><%= link_to 'Open Requests', requests_path %> </li>
+			<li><%= link_to 'Closed Requests', requests_closed_path %> </li>
+			  </ul>
+		</div>
+		<br/>
+	
+	</p>
+</div>

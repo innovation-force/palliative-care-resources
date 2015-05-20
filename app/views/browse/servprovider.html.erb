@@ -1,26 +1,17 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/browse_nav' %> 
+
 
 <h1>View Provider Details </h1>
 
+<div id="sidebar" class="col-xs-2">
+          <!-- sidebar content -->
+		  <%= render 'shared/browse_side_provider' %> 
+		 
+        </div>
+<div class="container">
+  <div class="row">
 
-<div class ="crumbs">
-	<% if @concern %>
-		</br><strong> Area of Concern: </strong><%= @concern.name %> <%= link_to 'change', browse_concern_path %> 
-
-	
-		<% if @category %>
-			</br><strong> Category: </strong> <%= @category.name %> <%= link_to 'change', {:controller => "browse", :action => "category", :concern => @concern.id} %>
-			</br><strong> Service: </strong><%= @service.title %> <%= link_to 'change', {:controller => "browse", :action => "service", :category => @category.id, :concern => @concern.id} %>
-	
-		<% end %>
-	<% end %>
-	
-	<% if !@category %>
-		</br><strong> Service: </strong><%= @service.title %> <%= link_to 'start over', {:controller => "browse", :action => "concern"}%>
-	<% end %> 
-</br> 
-
-</div>
+	<div class="col-xs-6" >
 
 
 <h2> <%= @provider.name %>  </h2>
@@ -28,6 +19,7 @@
 
 	
 </p>  
+
 <p> 
 	<strong>Organization:</strong> 
 	<%= @provider.organization %> 
@@ -61,9 +53,10 @@
 	<strong>Phone Number:</strong> 
 	<%= @provider.phone %> 
 </p> 
-
+<%= render :partial => "referral" %>
+<br/><br/>
 <p> 
-		<strong>Associated Services:</strong> 
+		<strong>All Associated Services:</strong> 
 	<% for service in Service.all %> 
 		<ul>
 			<div>
@@ -78,15 +71,16 @@
 	<% end %> 
 </p>
 <p>
-
-<h2>Add a Comment </h2> 
+</div>
+	<div class="col-xs-4" >
+<h4>Add a Comment </h4> 
 <%= render 'comments/form' %> 
+<br/>
 
-<h2>Comments for <%= @service.title %></h2>
 <%= render @service.comments %> 
 
 
-
-<%= link_to 'Start Over', browse_concern_path %> 
-
-</p>
+		</div>
+	</div>
+</div>
+</div>

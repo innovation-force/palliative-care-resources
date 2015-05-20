@@ -1,6 +1,6 @@
 class ConcernsController < ApplicationController
 	def index 
-		@concerns = Concern.all 
+		@concerns = Concern.order(params[:sort])
 	end 
 	
 	def show 

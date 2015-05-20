@@ -1,0 +1,22 @@
+ <div class ="admin_sidebar">
+
+ <p>
+ Area of Concern: <br/>
+
+<%= link_to @concern.name, browse_concern_path %> 
+ </p> 
+ 
+  <p>
+ Category: 
+<br/>
+<%= link_to @category.name, {:controller => "browse", :action => "category", :concern => @concern.id} %>
+ </p> 
+ 
+  <p>
+Service: 
+<br/>
+ None
+ </p> 
+ 
+ 
+</div>

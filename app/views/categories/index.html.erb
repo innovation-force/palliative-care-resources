@@ -17,11 +17,11 @@
 
 <table> 
 	<tr> 
-		<th>Name</th> 
-		<th>Description</th> 
+		<th><%= link_to "Name", :sort => "name" %></th> 
+		<th><%= link_to "Description", :sort => "description" %></th> 	
 	</tr> 
 	
-	<% @categories.sort_by{|category| category.name}.each do |category| %> 
+	<% @categories.each do |category| %> 
 		<tr> 
 			<td><%= category.name %></td> 
 			<td><%= category.description %></td> 

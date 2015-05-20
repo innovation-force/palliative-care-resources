@@ -7,7 +7,8 @@ class BrowseController < ApplicationController
 
 	def concern
 		@concern = Concern.all
-	end
+		@count = 0
+	end 
 
 	def service	
 		@service = Service.all
