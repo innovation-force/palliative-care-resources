@@ -15,20 +15,27 @@ class BrowseController < ApplicationController
 			@category = Category.find(params[:category])
 			@concern = Concern.find(params[:concern])
 			
+			@cities = Service.joins(:provider).select(:city).distinct
+			@states = Service.joins(:provider).select(:state).distinct
+			@category_services = @category.services
+			
 			@wildcard = params[:filter]
 			@wildcard.insert(0, '%')
 			@wildcard.insert(-1, '%')
 			
-			@services = Service.joins(:provider).where(["providers.state ILIKE ? OR providers.city ILIKE ?",  @wildcard, @wildcard])
+			@filter_services = Service.joins(:provider).where(["providers.state ILIKE ? OR providers.city ILIKE ?",  @wildcard, @wildcard])
 			
-			
+			@services = @category_services & @filter_services 
 	
 		else 
 			
 			@category = Category.find(params[:category])
 			@concern = Concern.find(params[:concern])
-		
-			@cities = Service.joins(:provider).joins(:category).where(service: @category.services).select(:city).distinct
+			@services = @category.services
+			
+			@cities = Service.joins(:provider).select(:city).distinct
+			
+			@states = Service.joins(:provider).select(:state).distinct
 		end
 		
 	end

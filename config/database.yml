@@ -26,11 +26,13 @@ test:
   database: db/pg_test
   username: postgres 
   password: palliative
-#  database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/pg_production
-  username: postgres 
-  password: palliative
-#  database: db/production.sqlite3
+  url: <%= ENV["DATABASE_URL"] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['DB_NAME'] %>
+  template: template0
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
