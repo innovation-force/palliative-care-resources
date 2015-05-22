@@ -11,10 +11,26 @@ class BrowseController < ApplicationController
 	end 
 
 	def service	
-		@service = Service.all
-		@category = Category.find(params[:category])
-		@concern = Concern.find(params[:concern])
-
+		if params[:filter]
+			@category = Category.find(params[:category])
+			@concern = Concern.find(params[:concern])
+			
+			@wildcard = params[:filter]
+			@wildcard.insert(0, '%')
+			@wildcard.insert(-1, '%')
+			
+			@services = Service.joins(:provider).where(["providers.state ILIKE ? OR providers.city ILIKE ?",  @wildcard, @wildcard])
+			
+			
+	
+		else 
+			
+			@category = Category.find(params[:category])
+			@concern = Concern.find(params[:concern])
+		
+			@cities = Service.joins(:provider).joins(:category).where(service: @category.services).select(:city).distinct
+		end
+		
 	end
 
 	def servprovider
@@ -39,7 +55,7 @@ class BrowseController < ApplicationController
 			@wildcard.insert(0, '%')
 			@wildcard.insert(-1, '%')
 			
-			@services = Service.joins(:provider).where(["title ILIKE ? OR description ILIKE ? OR providers.name ILIKE ? OR providers.organization ILIKE ? OR providers.city ILIKE ?",  @wildcard, @wildcard, @wildcard, @wildcard, @wildcard])
+			@services = Service.joins(:provider).where(["title ILIKE ? OR description ILIKE ? OR providers.name ILIKE ? OR providers.organization ILIKE ? OR providers.city ILIKE ? OR providers.state ILIKE ?",  @wildcard, @wildcard, @wildcard, @wildcard, @wildcard, @wildcard])
 			
 			
 		else

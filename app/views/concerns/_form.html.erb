@@ -1,5 +1,3 @@
-<form role="form"> 
-	<div class = "form-group form-compact"> 
 
 	<%= form_for @concern do |f| %> 
 
@@ -15,44 +13,44 @@
 				</ul> 
 			</div> 
 		<%end%> 
-		
+		<div class="col-xs-5">
 		<p> 
 			<%= f.label :name %><br> 
-			<%= f.text_field :name, class: 'form-control' %> 
+			<%= f.text_field :name, :size => "50"  %> 
 		</p> 
 		
 		<p> 
 			<%= f.label :description %><br> 
-			<%= f.text_area :description, class: 'form-control' %> 
+			<%= f.text_area :description, :size => "50"  %> 
 		</p> 
 		
 		<p> 
-		<div class = "form-group">
+	
 			<%= f.label :diagnosis %><br> 
-			<%= f.select :diagnosis, [['True', true], ['False', false]], {}, {class: 'form-control'}  %>
-		</div>
+			<%= f.select :diagnosis, [['True', true], ['False', false]]  %>
+
 		</p> 
+		<br/>
+		<%= f.submit 'Submit', :class => 'btn btn-default' %>
+		</div>
 		
+		<div class="col-xs-6">
 		<p> 
-			<div class = "form-group form-horizontal">
-			<div class = "height_limit">
-				<%= f.label :categories %>
-				<%= hidden_field_tag "concern[category_ids][]", nil %>
-				<% Category.all.sort_by{|category| category.name}.each do |category|%> 	
-				<div class = "checkbox">
-					<%= check_box_tag "concern[category_ids][]", category.id, 
-					@concern.categories.include?(category), id: dom_id(category), class: 'form-control'   %>
-					<%= label_tag dom_id(category), category.name, class: 'checkbox-inline' %></br>
-				</div>
-			<% end %> 
-			</div>
-			
-			</div>
-		</p>
+		<label>Associated Categories</label>
+		<div class="height_limit">
+		
+			<%= hidden_field_tag "concern[category_ids][]", nil %>
+			<% Category.all.sort_by{|category| category.name}.each do |category| %> 	
+				<%= check_box_tag "concern[category_ids][]", category.id, 
+				@concern.categories.include?(category), id: dom_id(category) %>
+				<%= label_tag dom_id(category), category.name %></br>
+		
+		<% end %> 
+		</div>
+	</p>
 	
 	</div>
-		<p> 
-			<%= f.submit 'Create Concern', :class => 'btn btn-default' %>
-		</p> 
+		
+	
 	<% end %> 
-</form>
+	

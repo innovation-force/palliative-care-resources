@@ -1,67 +1,74 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/admin_nav' %> 
 
- <div class = "nav_bar">
- 
-<%= link_to 'Back to List', providers_path %>
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
+		<p> 
 
-</div>
+			<strong>Name:</strong> 
+			<%= @provider.name %> 
+		</p> 
+		<p> 
+			<strong>Organization:</strong> 
+			<%= @provider.organization %> 
+		</p> 
+		<p> 
+			<strong>Address: </strong>
+			<%if @provider.state == "Online" %>
+				<%= @provider.state %>
+			<% else %> 		
+				<%= @provider.address1 %>
+				<%= @provider.address2 %> <br/>
+				<%= @provider.city %>
+				<%= @provider.state %>, 
+				<%= @provider.zip %> <br/>
+			<% end %>
 
-<p> 
+			
+		</p> 
+		<p> 
+			<strong>Website:</strong> 
+			<%= @provider.website %> 
+		</p> 
 
-	<strong>Name:</strong> 
-	<%= @provider.name %> 
-</p> 
-<p> 
-	<strong>Organization:</strong> 
-	<%= @provider.organization %> 
-</p> 
-<p> 
-	<strong>Address: </strong>
-	<%if @provider.state == "Online" %>
-		<%= @provider.state %>
-	<% else %> 		
-		<%= @provider.address1 %>
-		<%= @provider.address2 %> <br/>
-		<%= @provider.city %>
-		<%= @provider.state %>, 
-		<%= @provider.zip %> <br/>
-	<% end %>
-
-	
-</p> 
-<p> 
-	<strong>Website:</strong> 
-	<%= @provider.website %> 
-</p> 
-
-<p> 
-	<strong>Contact Name:</strong> 
-	<%= @provider.contact %> 
-</p> 
+		<p> 
+			<strong>Contact Name:</strong> 
+			<%= @provider.contact %> 
+		</p> 
 
 
-<p> 
-	<strong>Phone Number:</strong> 
-	<%= @provider.phone %> 
-</p> 
+		<p> 
+			<strong>Phone Number:</strong> 
+			<%= @provider.phone %> 
+		</p> 
 
-<p> 
-		<strong>Associated Services:</strong> 
-	<% for service in Service.all %> 
-		<ul>
-			<div>
-				<% if service.provider_id == @provider.id %>
-					<li>
-						<%= service.title %>
-						<% for cat in service.categories %> </br>
-							<%= cat.name %> 
+		<p> 
+				<strong>Associated Services:</strong> 
+			<% for service in Service.all %> 
+				<ul>
+					<div>
+						<% if service.provider_id == @provider.id %>
+							<li>
+								<%= service.title %>
+								<% for cat in service.categories %> </br>
+									<%= cat.name %> 
+								<% end %>
+							</li>
 						<% end %>
-					</li>
-				<% end %>
-			</div>
-		</ul>
-	<% end %> 
-</p>
-</p> 
+					</div>
+				</ul>
+			<% end %> 
+		</p>
+		</p> 
 
-
+		<%= link_to 'Edit Provider', edit_provider_path, class: 'btn btn-default' %> 
+			
+		</div>
+	</div> 
+</div>

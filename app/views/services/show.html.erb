@@ -1,8 +1,15 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/admin_nav' %> 
 
-<div class = "nav_bar">
-<%= link_to 'Back to List', services_path %>
-</div> 
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
+			
 
 <p> 
 	<strong>Name:</strong> 
@@ -25,6 +32,8 @@
 	<% end %>
 </ul> 
 </p>
+	<%= link_to 'Edit Service', edit_service_path, class: 'btn btn-default' %> 
+	<br/><br/>
 
 <% @service.comments.each do |comment| %> 
 	<fieldset class = 'comments'>

@@ -1,22 +1,24 @@
-<%= stylesheet_link_tag "style" %>
-<h1>List of Pending Requests</h1> 
-<div class = "nav_bar"> 
-<p> 
+<%= render 'shared/admin_nav' %> 
 
-</p>
-<p>
-	<%= link_to 'Back to Admin Interface', root_path %><br/>
-	<%= link_to 'View Open Requests', requests_path %>
-</p>
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
+<h1>List of Resolved Requests</h1> 
 
-</div>
-<table> 
+<table class="table table-hover"> 
 	<tr> 
 
 		<th><%= link_to "Title", :sort => "title" %></th> 
 		<th><%= link_to "Type", :sort => "req_type" %></th> 
 		<th><%= link_to "Submitter", :sort => "user" %></th> 
 		<th><%= link_to "Date", :sort => "datetime" %></th> 
+		<th></th>
 	</tr> 
 	
 	<% @requests.each do |request| %> 
@@ -34,3 +36,6 @@
 	<% end %> 
 </table> 
 
+	</div>
+	</div> 
+</div>

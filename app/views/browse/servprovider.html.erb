@@ -76,8 +76,23 @@
 <h4>Add a Comment </h4> 
 <%= render 'comments/form' %> 
 <br/>
+<% for service in @provider.services %> 
+	<% service.comments.each do |comment| %> 
+	
+	<p> 
 
-<%= render @service.comments %> 
+		<%= comment.body %> 
+		
+	</p>
+	<p> 
+	--- 
+		<%= comment.commenter %> 
+	</p> 
+
+	</br> 
+<% end %>
+<% end %>
+
 
 
 		</div>

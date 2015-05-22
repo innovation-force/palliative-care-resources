@@ -1,12 +1,20 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/browse_nav' %> 
+
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/browse_side_req' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
+	  
 <h1>Create New Request </h1> 
 
-<div class = "nav_bar">
-
-<p> 
-	<%= link_to 'Back to Browse', browse_concern_path %> 
-</p>
-
-</div>
 
 <%= render 'form' %>
+<br/><br/>
+	</div>
+	</div> 
+</div>

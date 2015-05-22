@@ -1,3 +1,5 @@
+
+
 <%= form_for @provider do |f| %> 
 
 	<% if @provider.errors.any? %> 
@@ -12,7 +14,7 @@
 			</ul> 
 		</div> 
 	<%end%> 
-	
+	<div class="col-xs-5">
 	<p> 
 		<label>Provider Name</label><br> 
 		<%= f.text_field :name, :size => 30  %> 
@@ -38,7 +40,9 @@
 		<%= f.label :website %><br> 
 		<%= f.text_field :website, :size => 30  %> 
 	</p> 
-	
+	<div class="well"> 
+	If service is online only or if any fields do not apply, leave them blank.
+	<br/><br/>
 	<p> 
 		<%= f.label :address1 %><br> 
 		<%= f.text_field :address1, :size => 50  %> 
@@ -63,8 +67,15 @@
 		<%= f.label :zip %><br> 
 		<%= f.number_field :zip%> 
 	</p> 
+	</div>
+	<p> 
+		<%= f.submit %> 
+	</p> 
+	
+	</div>
+	<div class="col-xs-7">
 	<h2>Add Associated Services </h2>
-	<fieldset>
+	
 	
 		<%= f.fields_for :services do |builder| %> 
 		
@@ -74,9 +85,7 @@
 		<%= link_to_add_fields "Add Another Service", f, :services %>
 
 
-	</fieldset>
-
-	<p> 
-		<%= f.submit %> 
-	</p> 
+	
+	</div>
+	
 <% end %> 

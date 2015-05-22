@@ -6,7 +6,7 @@
 	<%= f.text_area :description, :rows => 3 %> <br/>
 
 	<br/>
-	<%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: "Select a category"}, {multiple: true, size: "7"} %>
+	<%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: "Select Associated Categories"}, {multiple: true, size: "7"} %>
 	
 	<%= f.check_box :_destroy %> 
 	<%= f.label :_destroy, "Remove Service" %><br/>

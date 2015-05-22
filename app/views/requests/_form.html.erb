@@ -4,7 +4,9 @@
 		<p> 
 			Thank you for adding your input to the Palliative Care Resource Database. 
 			<br/>We appreciate your insights, observations and suggestions. 
+			<br/><br/>Hover over <span title= "You've got it! That's how it's done">[Bracketed]</span> text to view more information. 
 			<br/><br/>
+			
 		</p> 
 	</div>
 	<p> 
@@ -42,8 +44,8 @@
 
 	<div class = "request_info"> 
 		<p> 
-		<fieldset><legend>If you are suggesting a New Resource</legend><br/> 
-		Does your request fall under an existing resource? 
+		<div class = "well"><strong>If you are suggesting a New Resource</strong><br/> 
+		<%= f.label :parent_type, "Does your request fall under an existing resource?" %>
 		
 					
 	<%= f.select(:parent_type, options_for_select(["No/Not Sure", "Belongs to a Provider", "Belongs to a Category", "Belongs to a Concern"])) %>
@@ -58,7 +60,7 @@ If you are suggesting a New Category, what large concern would it be a part of? 
 	<%= f.label :parent_name, "Name of parent resource:" %>
 	<%= f.text_field :parent_name %> 
 	</p> 
-	</fieldset>
+	</div>
 	</div>
 	<p> 
 	<%= f.label :body, "Tell us about your request:" %><br/>
@@ -78,7 +80,7 @@ If you are suggesting a New Category, what large concern would it be a part of? 
 	</div>
 	
 	<%= f.hidden_field :resolved, :value => 'false' %>
-
-	<%= f.submit %>
+	<br/>
+	<%= f.submit 'Submit Request', :class => 'btn btn-default' %>
 	
 <% end %>

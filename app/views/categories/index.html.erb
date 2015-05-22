@@ -1,24 +1,26 @@
+<%= render 'shared/admin_nav' %> 
 
-<%= stylesheet_link_tag "style" %>
-<body>
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
 <h1>List of Categories</h1> 
-
-<div class = "nav_bar">
-
-<p> 
-	<%= link_to 'New Category', new_category_path %> 
-</p>
-<p>
-	<%= link_to 'Back to Admin Interface', root_path %>
-</p>
-
-</div>
-
-
-<table> 
+<%= link_to  new_category_path, class: 'btn btn-default' do %> 
+		 <i class="glyphicon-small glyphicon-plus">  </i>New Category
+	<%end%> 
+</br></br>
+<table class="table table-hover"> 
 	<tr> 
 		<th><%= link_to "Name", :sort => "name" %></th> 
 		<th><%= link_to "Description", :sort => "description" %></th> 	
+		<th></th> 
+		<th></th>
+		<th></th>
 	</tr> 
 	
 	<% @categories.each do |category| %> 
@@ -33,6 +35,10 @@
 		</tr> 
 	<% end %> 
 </table> 
+
+		</div>
+	</div> 
+</div>
 
 
 </body>

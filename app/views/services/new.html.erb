@@ -1,15 +1,27 @@
-<%= stylesheet_link_tag "style" %>
-<h1>Create new Service </h1> 
+<%= render 'shared/admin_nav' %> 
 
-<div class = "nav_bar">
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
+			
 
-<p> 
-	<%= link_to 'Back to Services', services_path %> 
-</p>
-<p>
-	<%= link_to 'Back to Admin Interface', root_path %>
-</p>
 
+			<h1>Create New Service </h1> 
+		
+
+			<div id="form-container" class = "container"> 
+				<div class = "row">
+					<div id="new-form" class = "col-xs-12">
+					<%= render 'form' %>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div> 
 </div>
-
-<%= render 'form' %>

@@ -1,5 +1,3 @@
-
-<%= javascript_include_tag :defaults, :cache => true %>
 <%= render 'shared/admin_nav' %> 
 
 <div id="main-container" class="container-fluid">
@@ -11,17 +9,13 @@
         </div>
 	<div id="main-content" class="col-xs-9">
 	  <!--  main content -->
- 
-			<h1>Create Service Provider</h1> 
-		
+			
 
-			<div id="form-container" class = "container"> 
-				<div class = "row">
-					<div id="new-form" class = "col-xs-11">
-		<%= render 'form' %>
- 
+
+			
+			
+			
 			
 		</div>
 	</div> 
 </div>
-
