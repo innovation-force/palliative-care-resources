@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
   
+  
   get 'requests/closed'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -27,8 +28,8 @@ Rails.application.routes.draw do
   
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
+  # root 'welcome#index'
+	root :to => 'browse#concern' 
 
 
   # Example of regular route:
