@@ -50,12 +50,6 @@ Category.create!([
   {name: "Treatment, Dementia/ Alzheimer's", description: ""}
 ])
 
-Comment.create!([
-  {commenter: "Please", body: "Work", service_id: 22},
-  {commenter: "does this ", body: "work", service_id: 50},
-  {commenter: "testing comments", body: "this is where I would write some important information to share with other care managers", service_id: 16},
-  {commenter: "test again", body: "This is a second comment. What happens when I add it?", service_id: 16}
-])
 Concern.create!([
   {name: "Cancer", description: "Includes all types", diagnosis: true},
   {name: "CHF", description: "Congestive Heart Failure", diagnosis: true},
@@ -116,10 +110,7 @@ Provider.create!([
   {name: "Alzheimer's Association of Washington", organization: "Alzheimer's Association", address1: "", address2: "", city: "", state: "Washington", zip: nil, phone: "", website: "http://www.alz.org/alzwa/", contact: ""},
   {name: "Northwest Parkinson's Foundation", organization: "", address1: "", address2: "", city: "Seattle", state: "Washington", zip: nil, phone: "", website: "http://nwpf.org", contact: ""}
 ])
-ProvidersServices.create!([
-  {provider_id: 1, service_id: 1},
-  {provider_id: 3, service_id: 4}
-])
+
 Request.create!([
   {title: "This is a test", req_type: "Comment/Suggestion", body: "this is only a test", parent_type: "Belongs to a Provider", parent_name: "testing", user: "Tracy", email: "testing@email.com", note: "these are some notes\r\n\r\nthese are some more", resolved: false}
 ])
@@ -172,6 +163,16 @@ Service.create!([
   {title: "Parkinson's Resources and Information", description: "Organization serving the greater Seattle area with specialty care, education and support resources and events", provider_id: 44, refcount: 0},
   {title: "Alzheimer's Support Groups", description: "", provider_id: 41, refcount: 0}
 ])
+
+
+Comment.create!([
+  {commenter: "Please", body: "Work", service_id: 22},
+  {commenter: "does this ", body: "work", service_id: 50},
+  {commenter: "testing comments", body: "this is where I would write some important information to share with other care managers", service_id: 16},
+  {commenter: "test again", body: "This is a second comment. What happens when I add it?", service_id: 16}
+])
+
+
 Service::HABTM_Categories.create!([
   {category_id: 4, service_id: 16},
   {category_id: 25, service_id: 16},
@@ -649,3 +650,4 @@ Category::HABTM_Services.create!([
   {category_id: 9, service_id: 57},
   {category_id: 44, service_id: 35}
 ])
+
