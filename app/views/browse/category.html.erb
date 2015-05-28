@@ -24,6 +24,7 @@
 				<table class="table table-hover">
 					<tr> 
 						<th>Category</th> 
+						<th></th>
 					</tr> 
 					
 
@@ -31,8 +32,9 @@
 
 						<tr> 
 							<td><%= link_to category.name, {:controller => "browse", :action => "service", :category => category.id, :concern => @concern.id} %>
-							(<%= category.services.count %>)
+							
 							</td>
+							<td><%= category.services.count %></td>
 						</tr> 
 
 					<% end %> 
