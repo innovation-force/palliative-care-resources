@@ -1,4 +1,7 @@
 class ServicesController < ApplicationController
+	before_action :authenticate_user!, :except => [:index] 
+	
+	
 	def index 
 		@services = Service.joins(:provider).order(params[:sort]) 
 		if (params[:sort]) == "comments" 

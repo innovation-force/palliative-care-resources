@@ -7,7 +7,7 @@
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-				<li><%= link_to 'Area of Concern List', controller: 'concerns' %> </li>
+				<li><%= link_to 'Area of Concern List', concerns_path %> </li>
 				<li><%= link_to 'Add New Area of Concern', new_concern_path %> </li>
 			  </ul>
 		</div>
@@ -18,7 +18,7 @@
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					<li><%= link_to 'Category List', controller: 'categories' %> </li>
+					<li><%= link_to 'Category List', categories_path %> </li>
 					<li><%= link_to 'Add New Category', new_category_path %> </li>
 			  </ul>
 		</div>
@@ -29,7 +29,7 @@
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
-				<li><%= link_to 'Service Providers List', controller: 'providers' %> </li>
+				<li><%= link_to 'Service Providers List', providers_path %> </li>
 				<li><%= link_to 'Add New Service Provider', new_provider_path, :"data-no-turbolink" => true %> </li>
 			  </ul>
 		</div>
@@ -39,7 +39,7 @@
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-			<li><%= link_to 'Services List', controller: 'services' %> </li>
+			<li><%= link_to 'Services List', services_path %> </li>
 			<li><%= link_to 'Add New Service', new_service_path %> </li>
 			  </ul>
 		</div>

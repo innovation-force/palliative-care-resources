@@ -1,0 +1,30 @@
+<%= render 'shared/admin_nav' %> 
+
+ <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+        <div id="main-content" class="col-xs-9">
+          <!--  main content -->
+		  
+		  <table class="table table-hover"> 
+			<% @users.each do |user| %> 
+				<tr> 
+					
+					<td> <%= user.email %> </td> 
+					<td> <%= user.approved %> </td> 
+					<td> <%= link_to "Edit", edit_user_path(user) %></td>
+					<td><%= link_to 'Destroy', user_path(user), 
+					method: :delete, 
+					data: { confirm: 'Are you sure?' } %></td> 
+				
+				</tr>
+			
+			<% end %>
+			</table>
+        </div>
+      </div>
+    </div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   get 'browse/category'
 
   get 'browse/concern'
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   resources :concerns
   resources :categories
   resources :providers
+  resources :users
   resources :services do
 	resources :comments 
   end 
