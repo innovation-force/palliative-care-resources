@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
 	
 	def show 
 		@request = Request.find(params[:id]) 
-		
+		redirect_to browse_path 
 	end 
 	
 	def new 
