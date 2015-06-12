@@ -7,6 +7,9 @@
 
 	<br/>
 	<label>Categories for Service</label>
+	<br/>
+	Hold down control or command key to select multiple
+	<br/>
 	<%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: "Select Associated Categories"}, {multiple: true, size: "7"} %>
 	
 	<%= f.check_box :_destroy %> 
