@@ -1,9 +1,11 @@
  <div class ="admin_sidebar">
 
  <p>
+ <% if @concern %> 
  Area of Concern: <br/>
-
+<% if @concern %> 
 <%= link_to @concern.name, browse_concern_path %> 
+<% end %>
  </p> 
  
   <p>
@@ -18,6 +20,11 @@ Service:
  <%= link_to @service.title, {:controller => "browse", :action => "service", :category => @category.id, :concern => @concern.id} %>
 	
  </p> 
- 
+ <% else %> 
+ Service: 
+<br/>
+ <%= link_to @service.title, :back %>
+	
+ <% end %>
  
 </div>
