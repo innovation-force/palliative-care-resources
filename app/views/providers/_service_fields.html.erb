@@ -10,7 +10,7 @@
 	<br/>
 	Hold down control or command key to select multiple
 	<br/>
-	<%= f.collection_select :category_ids, Category.all, :id, :name, {prompt: "Select Associated Categories"}, {multiple: true, size: "7"} %>
+	<%= f.collection_select :category_ids, Category.order('name ASC').all, :id, :name, {prompt: "Select Associated Categories"}, {multiple: true, size: "7"} %>
 	
 	<%= f.check_box :_destroy %> 
 	<%= f.label :_destroy, "Remove Service" %><br/>

@@ -20,6 +20,7 @@
 	<%= link_to  new_concern_path, class: 'btn btn-default' do %> 
 		 <i class="glyphicon-small glyphicon-plus">  </i>New Area of Concern 
 	<%end%> 
+
 <br/><br/>
 <table class="table table-hover"> 
 	<tr> 
@@ -37,9 +38,9 @@
 			<td><%= concern.name %></td> 
 			<td><%= concern.description %></td> 
 			<td><%= concern.diagnosis %></td> 
-			<td><%= link_to 'Show', concern_path(concern) %></td>
+			<td><%= link_to 'Details', concern_path(concern) %></td>
 			<td><%= link_to 'Edit', edit_concern_path(concern) %> </td> 
-			<td><%= link_to 'Destroy', concern_path(concern), 
+			<td><%= link_to 'Delete', concern_path(concern), 
 					method: :delete, 
 					data: { confirm: 'Are you sure?' } %></td> 
 		</tr> 

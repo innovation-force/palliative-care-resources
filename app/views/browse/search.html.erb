@@ -1,10 +1,18 @@
-<%= stylesheet_link_tag "style" %>
+<%= render 'shared/browse_nav' %> 
 
-
+<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+		  <%= render 'shared/browse_side_req' %> 
+		 
+        </div>
+	<div id="main-content" class="col-xs-9">
+	  <!--  main content -->
 
 <%= form_tag ('/browse/search'), :method => 'get' do %>
 	<p> 
-		<%= text_field_tag :search %> 
+		<%= text_field_tag :search, params[:search] %> 
 		<%= submit_tag "Search" %>
 	</p>
 
@@ -13,9 +21,6 @@
 
 
 	<table> 
-		<tr> 
-			<th>Services</th> 
-		</tr> 
 		<% if @services %>
 			<% for service in @services%> 
 
@@ -44,4 +49,8 @@
 <%= link_to 'Start Over', browse_concern_path %> 
 
 </p>
+
+		</div>
+	</div>
+</div>
 

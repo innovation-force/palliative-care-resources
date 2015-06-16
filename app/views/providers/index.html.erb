@@ -33,9 +33,9 @@
 			<td><%= provider.organization %></td> 
 			<td><%= provider.city %></td> 
 			<td><%= provider.state %></td> 
-			<td><%= link_to 'Show', provider_path(provider) %></td>
+			<td><%= link_to 'Details', provider_path(provider) %></td>
 			<td><%= link_to 'Edit', edit_provider_path(provider), :"data-no-turbolink" => true %> </td> 
-			<td><%= link_to 'Destroy', provider_path(provider), 
+			<td><%= link_to 'Delete', provider_path(provider), 
 					method: :delete, 
 					data: { confirm: 'Are you sure?' } %></td> 
 		</tr> 

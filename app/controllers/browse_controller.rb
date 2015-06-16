@@ -58,12 +58,12 @@ class BrowseController < ApplicationController
 
 	def search 
 		if params[:search]
-			@wildcard = params[:search]
+			@wildcard = params[:search].dup
 			@wildcard.insert(0, '%')
 			@wildcard.insert(-1, '%')
 			
 			@services = Service.joins(:provider).where(["title ILIKE ? OR description ILIKE ? OR providers.name ILIKE ? OR providers.organization ILIKE ? OR providers.city ILIKE ? OR providers.state ILIKE ?",  @wildcard, @wildcard, @wildcard, @wildcard, @wildcard, @wildcard])
-			
+
 			
 		else
 			@providers = Provider.all 

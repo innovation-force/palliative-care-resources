@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :except => [:create, :new, :show] 
 	
 	def index 
 		@requests = Request.where(["resolved is false"])
@@ -11,7 +11,6 @@ class RequestsController < ApplicationController
 	
 	def show 
 		@request = Request.find(params[:id]) 
-		redirect_to browse_path 
 	end 
 	
 	def new 
