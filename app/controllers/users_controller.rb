@@ -2,11 +2,15 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index 
-		@users = User.where(:approved => false)
+		
+		@users = User.all 
+		@na_users = User.where(:approved => false)
+		
 	end 
 	
 	def show 
-		@users = User.where(:approved => false)
+		@users = User.all 
+		@na_users = User.where(:approved => false)
 		render 'index'
 		
 	end 

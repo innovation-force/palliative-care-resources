@@ -1,5 +1,5 @@
 class ConcernsController < ApplicationController
-	before_action :authenticate_user!, :except => [:index] 
+	before_action :authenticate_user!
 	
 	def index 
 		@concerns = Concern.order(params[:sort])

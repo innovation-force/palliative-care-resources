@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!, :except => [:create] 
 	def create 
 		@service = Service.find(params[:service_id])
 		@comment = @service.comments.create(comment_params)
