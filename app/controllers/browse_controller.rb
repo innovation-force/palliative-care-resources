@@ -55,6 +55,10 @@ class BrowseController < ApplicationController
 		
 		
 	end
+	
+	def userguide 
+	
+	end 
 
 	def search 
 		if params[:search]

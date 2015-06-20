@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
   
+  get 'browse/userguide'
   
   get 'requests/closed'
 
