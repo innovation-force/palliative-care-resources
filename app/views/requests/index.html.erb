@@ -27,7 +27,9 @@
 			<td><%= request.req_type %></td> 
 			<td><%= request.user %></td> 
 			<td><%= request.created_at.strftime('%m/%d/%Y') %></td> 
-		
+			
+			<td><%= link_to 'Details', edit_request_path(request) %></td>
+				
 		</tr> 
 	<% end %> 
 </table> 
