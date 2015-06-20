@@ -28,10 +28,7 @@
 			<td><%= request.user %></td> 
 			<td><%= request.created_at.strftime('%m/%d/%Y') %></td> 
 			
-			<td><%= link_to 'Details', edit_request_path(request) %></td>
-						<td><%= link_to 'Destroy (Beta ONLY)', request_path(request), 
-					method: :delete, 
-					data: { confirm: 'Are you sure?' } %></td> 
+		
 		</tr> 
 	<% end %> 
 </table> 
