@@ -29,11 +29,12 @@
 			<% end %> 
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li class="divider-vertical"></li>
+		<li class="divider-vertical"></li>
+	    <li><%= link_to 'Admin Interface', concerns_path %></li>
+		<li class="divider-vertical"></li>
 		<li><%= link_to 'Make a Request', new_request_path %></li>
         <li class="divider-vertical"></li>
-		<li><%= link_to 'Admin Interface', concerns_path %></li>
-		<li class="divider-vertical"></li>
+
 		<li><%= link_to 'User Guide', browse_userguide_path %></li>
 		<li class="divider-vertical"></li>
       </ul>
