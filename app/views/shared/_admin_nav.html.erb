@@ -6,10 +6,18 @@
 	 <ul class="nav navbar-nav navbar-right" id="sign-in-block">
          
 			<% if user_signed_in?%> 
+				<li class="divider-vertical"></li>
+				<li><%= link_to 'Admin User Guide', browse_adminguide_path %></li>
+				<li class="divider-vertical"></li>
 				<li><%= link_to current_user.email %> </li> 
+				<li class="divider-vertical"></li>
 				<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+
+				
 			<% else %> 
+				<li class="divider-vertical"></li>
 				<li><%= link_to "Sign up", new_user_registration_path %></li> 
+				<li class="divider-vertical"></li>
 				<li><%= link_to "Sign in", new_user_session_path %> </li>
 			<% end %>
 			
