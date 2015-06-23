@@ -23,10 +23,11 @@
 		<%= f.label :description %><br> 
 		<%= f.text_area :description, :size => "50" %> 
 	</p> 
-	
-	
 	<p>	
-		<%= f.select :provider_id, Provider.all.collect { |p| [p.name, p.id]} %>
+	<label>Service Provider</label>
+		<br/>Use Service Provider form if Provider does not already exist <br/>
+	
+		<%= f.select :provider_id, Provider.all.collect { |p| [p.name, p.id]}.sort %>
 	
 	</p>
 	<p> 
