@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   get 'browse/adminguide' 
   
+  get 'browse/aboutadmin'
+  
   get 'requests/closed'
 
   # The priority is based upon order of creation: first created -> highest priority.

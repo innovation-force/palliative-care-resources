@@ -1,0 +1,30 @@
+<%= render 'shared/admin_nav' %> 
+
+<div id="sidebar" class="col-xs-4">
+          <!-- sidebar content -->
+		  <%= render 'shared/admin_side' %> 
+		 
+        </div>
+
+<h1>Admin Interface Access and Accounts </h1>	
+<div class="container">
+  <div class="row">
+
+	<div class="col-xs-8" >
+
+The Admin Interface is password protected and requires an administrator account to access. Most users will not have any reason to need access to the Admin Interface, as they use the database to help members locate resources. 
+<br/><br/> 
+Inside the Admin Interface, administrators can add, edit and delete resources that appear in the Palliative Care Database. 
+<br/>
+They can also delete comments and respond to User Requests.
+<br/><br/>  
+To contact the administrators about matters concerning the database, please <%= link_to 'Make a Request', new_request_path %>. 
+<br/><br/> 
+You may create an account if you feel that you have a reason to access the Admin Interface. Accounts must be approved before they can perform administrative actions. 
+<br/><br/> 
+Please email Leanne.Spears@regence.com with your name, the email with which you created an account, and your reason for requesting access to expedite the account approval process. 
+<br/><br/><br/><br/>
+
+</div>
+</div>
+</div>
