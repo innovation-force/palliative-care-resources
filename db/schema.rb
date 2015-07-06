@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20150609175205) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.text     "name"
-    t.text     "description"
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150609175205) do
   add_index "categories_services", ["service_id"], name: "index_categories_services_on_service_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.text     "commenter"
+    t.string   "commenter"
     t.text     "body"
     t.integer  "service_id"
     t.datetime "created_at", null: false
@@ -54,26 +54,26 @@ ActiveRecord::Schema.define(version: 20150609175205) do
   add_index "comments", ["service_id"], name: "index_comments_on_service_id", using: :btree
 
   create_table "concerns", force: :cascade do |t|
-    t.text     "name"
-    t.text     "description"
+    t.string   "name"
+    t.string   "description"
     t.boolean  "diagnosis"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "providers", force: :cascade do |t|
-    t.text     "name"
-    t.text     "organization"
-    t.text     "address1"
-    t.text     "address2"
-    t.text     "city"
-    t.text     "state"
+    t.string   "name"
+    t.string   "organization"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
     t.integer  "zip"
-    t.text     "phone"
-    t.text     "website"
+    t.string   "phone"
+    t.string   "website"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.text     "contact"
+    t.string   "contact"
   end
 
   create_table "providers_services", force: :cascade do |t|
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 20150609175205) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.text     "title"
-    t.text     "description"
+    t.string   "title"
+    t.string   "description"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "provider_id"
@@ -129,4 +129,11 @@ ActiveRecord::Schema.define(version: 20150609175205) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "categories_concerns", "categories"
+  add_foreign_key "categories_concerns", "concerns"
+  add_foreign_key "categories_services", "categories"
+  add_foreign_key "categories_services", "services"
+  add_foreign_key "comments", "services"
+  add_foreign_key "providers_services", "providers"
+  add_foreign_key "providers_services", "services"
 end
