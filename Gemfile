@@ -25,8 +25,8 @@ group :production do
 end
 
 group :development, :test do
-  # gem 'rspec-rails'
-  # gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
