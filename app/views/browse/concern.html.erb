@@ -1,73 +1,60 @@
-<%= render 'shared/browse_nav' %> 
+<%= render 'shared/browse_nav' %>
 
-
-<h1>List of Concerns</h1> 
+<h1>List of Concerns</h1>
 
 <div id="sidebar" class="col-xs-2">
-          <!-- sidebar content -->
-		  <%= render 'shared/browse_side' %> 
-		 
-        </div>
+  <!-- sidebar content -->
+  <%= render 'shared/browse_side' %>
+</div>
 
-	
 <div class="container">
   <div class="row">
 
-	<div class="col-xs-5" >
-		
-			<table class="table table-hover"> 
-				<tr> 
-					<th>Diagnosis</th> 
-					<th></th>
-				</tr> 
-			
-				<% for concern in Concern.all%> 
-					<% if concern.diagnosis %>
-					<tr> 
-						<% @count = 0 %>
-						<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
-						
-						<% for c in concern.categories %> 				
-							
-							<% @count = @count + c.services.count %> 
-						<% end %> 
-					
-						<td><%= @count %></td>
+    <div class="col-xs-5" >
+      <table class="table table-hover">
+        <tr>
+          <th>Diagnosis</th>
+          <th></th>
+        </tr>
+        <% for concern in Concern.all%>
+          <% if concern.diagnosis %>
+            <tr>
+              <% @count = 0 %>
+              <td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
+                <% for c in concern.categories %>
+                  <% @count = @count + c.services.count %>
+                <% end %>
+                <td><%= @count %></td>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
 
-						</td>
-					</tr> 
-					<% end %>
-				<% end %> 
-			
-			</table> 
-	</div>
-	<div class="col-xs-5"> 
+    <div class="col-xs-5">
+      <table class="table table-hover">
+        <tr>
+          <th>Other Concerns</th>
+          <th></th>
+        </tr>
 
-	<table class="table table-hover"> 
-		<tr> 
-			<th>Other Concerns</th> 
-			<th></th>
-		</tr> 
-		
-		<% for concern in Concern.all%> 
-			<% if not concern.diagnosis %>
-			<tr> 
-				<% @count = 0 %>
-				<td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
-				
-				<% for c in concern.categories %> 				
-					
-					<% @count = @count + c.services.count %> 
-				<% end %> 
-			
-				<td><%= @count %></td>
+        <% for concern in Concern.all%>
+          <% if not concern.diagnosis %>
+            <tr>
+              <% @count = 0 %>
+              <td><%= link_to concern.name, {:controller => "browse", :action => "category", :concern => concern.id } %>
 
-				</td>
-			</tr> 
-			<% end %>
-		<% end %> 
-	</table> 
-	<div>
+                <% for c in concern.categories %>
+                  <% @count = @count + c.services.count %>
+                <% end %>
+                <td><%= @count %></td>
 
-	</div> 
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
