@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PcDb</title>
+    <title>CareLibrary</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render "shared/flash" %>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to root_path, :class => "navbar-brand" do %>
+            <%= image_tag "logo.png", :alt => "CareLibrary" %>
+          <% end %>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar">
+            <li><%= link_to "Search", "/search" %></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li><%= link_to "Admin Site", "/admin" %></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to "Log in", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

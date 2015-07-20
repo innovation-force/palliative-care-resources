@@ -12,8 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require select2
 //= require_tree .
 
-Turbolinks.enableProgressBar();
+// Turbolinks.enableProgressBar();
+
+$(function() {
+  $(".select2-rails").select2();
+
+  $("#resource_provider_id").select2({
+    placeholder: "Select a provider",
+    allowClear: true
+  });
+
+  $("#resource_tag_ids").select2({
+    placeholder: "Select a tag(s)",
+    allowClear: true
+  });
+});

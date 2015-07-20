@@ -1,0 +1,36 @@
+<div class="row">
+
+<div class="col-sm-12">
+  <h2><%= @resource.name %></h2>
+</div>
+
+<div class="col-sm-8">
+  <p><%= @resource.slug %></p>
+
+  <br>
+
+  <!-- ratings -->
+</div>
+
+<div class="col-sm-4">
+  <%= link_to "Refer to Patient", nil, class: "btn btn-success btn-block" %>
+
+  <br>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span class="left">Phone</span>
+      <span class="right"><%= @resource.phone_number %></span>
+    </li>
+    <li class="list-group-item">
+      <span class="left">Website</span>
+      <span class="right"><%= link_to @resource.website, @resource.website, target: "_blank" %></span>
+    </li>
+    <li class="list-group-item">
+      <span class="left">Location</span>
+      <span class="right"><%#= @resource.address %></span>
+    </li>
+  </ul>
+</div>
+
+</div>
