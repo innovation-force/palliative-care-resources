@@ -16,8 +16,6 @@
 //= require select2
 //= require_tree .
 
-// Turbolinks.enableProgressBar();
-
 $(function() {
   $(".select2-rails").select2();
 
@@ -29,5 +27,15 @@ $(function() {
   $("#resource_tag_ids").select2({
     placeholder: "Select a tag(s)",
     allowClear: true
+  });
+});
+
+$(function () {
+  var searchBar = $("#tag_ids");
+  searchBar.select2({
+    placeholder: "Search CareLibrary"
+  });
+  searchBar.on("change", function (event) {
+    $(this).closest("form").submit();
   });
 });
