@@ -1,0 +1,38 @@
+<%= form_for [:admin, @resource] do |f| %>
+  <div class="form-group">
+    <label for="">Name</label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Organization</label>
+    <%= f.text_field :organization, class: "form-control" %>
+    <%#= f.select :provider_id, options_from_collection_for_select(Provider.all, :id, :name, {:selected => @resource.provider_id}), {:include_blank => true}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Slug</label>
+    <%= f.text_field :slug, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Website</label>
+    <%= f.text_field :website, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Phone Number</label>
+    <%= f.text_field :phone_number, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="">Tags</label>
+    <%= f.select :tag_ids, options_from_collection_for_select(Tag.all, :id, :name, {:selected => @resource.tag_ids}), {}, {multiple: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Save", class: "btn btn-default" %>
+    <%= link_to "Cancel", admin_resources_path %>
+  </div>
+<% end %>
+

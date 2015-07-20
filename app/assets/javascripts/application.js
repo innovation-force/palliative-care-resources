@@ -12,8 +12,30 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require select2
 //= require_tree .
 
-Turbolinks.enableProgressBar();
+$(function() {
+  $(".select2-rails").select2();
+
+  $("#resource_provider_id").select2({
+    placeholder: "Select a provider",
+    allowClear: true
+  });
+
+  $("#resource_tag_ids").select2({
+    placeholder: "Select a tag(s)",
+    allowClear: true
+  });
+});
+
+$(function () {
+  var searchBar = $("#tag_ids");
+  searchBar.select2({
+    placeholder: "Search CareLibrary"
+  });
+  searchBar.on("change", function (event) {
+    $(this).closest("form").submit();
+  });
+});

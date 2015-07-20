@@ -11,8 +11,35 @@
  * file per style scope.
  *
  *= require_self
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-brand img {
+  height: 32px;
+  margin-top: -3px;
+}
+
+.list-group-item {
+  .left {
+    text-align: left;
+    font-weight: bold;
+  }
+  .right {
+    text-align: right;
+    float: right;
+  }
+}
+
+.list-group-item .list-inline {
+  margin-top: 5px;
+  margin-bottom: 0;
+}

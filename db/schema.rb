@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609175205) do
+ActiveRecord::Schema.define(version: 20150717222555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,22 @@ ActiveRecord::Schema.define(version: 20150609175205) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "resources", force: :cascade do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "slug"
+    t.integer  "provider_id"
+    t.string   "organization"
+  end
+
+  create_table "resources_tags", id: false, force: :cascade do |t|
+    t.integer "resource_id"
+    t.integer "tag_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -107,6 +123,12 @@ ActiveRecord::Schema.define(version: 20150609175205) do
     t.datetime "updated_at",              null: false
     t.integer  "provider_id"
     t.integer  "refcount",    default: 0
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150609175205) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "approved",               default: false, null: false
+    t.boolean  "admin"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree

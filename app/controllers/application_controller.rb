@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-	def after_sign_in_path_for(resource)
-		concerns_path
-	end
-  
-  
+  def after_sign_in_path_for(resource)
+    resources_path
   end
+
+  def logged_in?
+    session[:user_id].present?
+  end
+
+  helper_method :logged_in?
+end
