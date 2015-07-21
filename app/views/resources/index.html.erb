@@ -27,22 +27,29 @@
       <% @resources.each do |resource| %>
 
         <div class="list-group-item" onclick="showAdditional(this);">
-          <h4 class="list-group-item-heading">
+          <h3 class="list-group-item-heading">
             <%= link_to resource.name, resource %>
             <% if resource.organization.present? %>
               <small><%= resource.organization %></small>
             <% end %>
-          </h4>
+          </h3>
           <p class="list-group-item-text"><%= resource.slug %></p>
           <ul class="list-inline">
-            <li><%= link_to "Refer to Patient", nil, class: "btn btn-success btn-xs" %></li>
-            <li><%= Random.rand(200) %> referrals</li>
+            <li>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <%= Random.rand(200) %> reviews
+            </li>
             <% if resource.phone_number.present? %>
               <li><%= resource.phone_number %></li>
             <% end %>
             <% if resource.website.present? %>
               <li><%= link_to resource.website, resource.website %></li>
             <% end %>
+            <li class="pull-right"><%= link_to "Refer to Patient", nil, class: "btn btn-success btn-xs" %></li>
           </ul>
         </div>
 
