@@ -1,0 +1,53 @@
+<div class="row">
+
+  <div class="col-sm-3">
+    <!--
+    <div class="list-group">
+      <a href="#" class="list-group-item">Browse all</a>
+      <a href="#" class="list-group-item">Favorites <span class="badge pull-right">12</span></a>
+      <a href="#" class="list-group-item">Saved Searches <span class="badge pull-right">4</span></a>
+    </div>
+    -->
+
+    <ul class="list-unstyled">
+      <li><%= link_to "How does this work?", guide_path %></li>
+      <li><%= mail_to "team@carelibrary.org", "Suggest a service", subject: "Suggest a service" %></li>
+      <li><%= mail_to "team@carelibrary.org", "Send feedback", subject: "Feedback" %></li>
+    </ul>
+  </div>
+
+  <div class="col-sm-9">
+    <%= form_tag '/search', :method => 'get' do %>
+      <%= select_tag :category_ids,
+        options_from_collection_for_select(Category.all, :id, :name, {selected: params[:category_ids]}),
+        {multiple: true, class: "select2-rails form-control"} %>
+    <% end %>
+
+    <h5 class="text-center"><%= @services.length %> services</h5>
+
+    <div class="list-group">
+      <% @services.each do |service| %>
+
+        <div class="list-group-item" onclick="showAdditional(this);">
+          <h4 class="list-group-item-heading">
+            <%= link_to service.title, service %>
+            <% if service.provider.present? %>
+              <small><%= service.provider.name %></small>
+            <% end %>
+          </h4>
+          <p class="list-group-item-text"><%= service.description %></p>
+          <ul class="list-inline">
+           <% if service.provider.phone.present? %>
+              <li><%= service.provider.phone %></li>
+            <% end %>
+            <% if service.provider.website.present? %>
+              <li><%= link_to service.provider.website, service.provider.website %></li>
+            <% end %>
+          </ul>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>

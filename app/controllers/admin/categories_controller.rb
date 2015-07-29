@@ -1,6 +1,6 @@
 class Admin::CategoriesController < Admin::ApplicationController
   def index
-    @categorys = Category.where(nil)
+    @categories = Category.where(nil)
   end
 
   def new
@@ -13,7 +13,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     if @category.update(category_params)
       redirect_to admin_categories_path
     else
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -41,6 +41,6 @@ class Admin::CategoriesController < Admin::ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :description)
   end
 end

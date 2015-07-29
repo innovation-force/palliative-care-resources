@@ -18,20 +18,10 @@
 
 $(function() {
   $(".select2-rails").select2();
-
-  $("#resource_provider_id").select2({
-    placeholder: "Select a provider",
-    allowClear: true
-  });
-
-  $("#resource_tag_ids").select2({
-    placeholder: "Select a tag(s)",
-    allowClear: true
-  });
 });
 
 $(function () {
-  var searchBar = $("#tag_ids");
+  var searchBar = $("#category_ids");
   searchBar.select2({
     placeholder: "Search CareLibrary"
   });
@@ -40,18 +30,3 @@ $(function () {
   });
 });
 
-var chart = c3.generate({
-  bindto: '#chart',
-  data: {
-    columns: [
-      ['data1', 30, 200, 100, 400, 150, 250],
-      ['data2', 50, 20, 10, 40, 15, 25]
-    ],
-    types: {
-      data1: 'bar',
-    }
-  },
-  axis: {
-    rotated: true
-  }
-});

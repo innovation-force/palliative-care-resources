@@ -1,0 +1,27 @@
+<h2>Services</h2>
+
+<%= link_to "New Service", new_admin_service_path %>
+
+<table class="table">
+  <thead>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Provider</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.id %></td>
+        <td><%= service.title %></td>
+        <td><%= service.provider.name %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_service_path(service), class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", admin_service_path(service), method: :delete,
+            data: { confirm: "Are you sure you want to delete this service?" },
+            class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+<h2>Providers</h2>
+
+<%= link_to "New Provider", new_admin_provider_path %>
+
+<table class="table">
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.id %></td>
+        <td><%= provider.name %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_provider_path(provider), class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", admin_provider_path(provider), method: :delete,
+            data: { confirm: "Are you sure you want to delete this provider?" },
+            class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
