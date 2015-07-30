@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ServicesController do
+describe Admin::ServicesController do
   context "an unauthenticated user" do
   end
 

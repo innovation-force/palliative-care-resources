@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ServicesController, type: :controller do
+describe SearchController, type: :controller do
   describe "GET #index" do
     it "renders the index template" do
       get :index

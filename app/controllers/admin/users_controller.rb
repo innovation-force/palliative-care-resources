@@ -3,20 +3,6 @@ class Admin::UsersController < Admin::ApplicationController
     @users = User.where(nil)
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new
-
-    if @user.update(user_params)
-      redirect_to admin_users_path
-    else
-      render 'new'
-    end
-  end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -41,6 +27,6 @@ class Admin::UsersController < Admin::ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :admin)
+    params.require(:user).permit(:admin)
   end
 end

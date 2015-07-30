@@ -30,7 +30,7 @@
 
         <div class="list-group-item" onclick="showAdditional(this);">
           <h4 class="list-group-item-heading">
-            <%= link_to service.title, service %>
+            <%= link_to service.title, provider_path(service.provider, { service_id: service.id }) %>
             <% if service.provider.present? %>
               <small><%= service.provider.name %></small>
             <% end %>

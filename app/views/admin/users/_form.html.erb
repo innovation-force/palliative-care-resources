@@ -1,27 +1,10 @@
-<% @user.errors.full_messages.each do |message| %>
-  <div class="alert alert-danger" role="alert">
-    <%= message.html_safe %>
-    <button class='close' type="button" data-dismiss="alert">
-      <span aria-hidden="true">×</span>
-      <span class='sr-only'>Close</span>
-    </button>
-  </div>
-<% end %>
-
 <%= form_for [:admin, @user] do |f| %>
   <div class="form-group">
-    <label for="">Email</label>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
     <div class="checkbox">
       <label>
         <%= f.check_box :admin %> Admin
       </label>
     </div>
-
   </div>
 
   <div class="form-group">
